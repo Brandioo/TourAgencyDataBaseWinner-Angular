@@ -9,6 +9,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import { DestinationTableComponent } from './destinations/destination-table/destination-table.component';
 import { DestinationManageComponent } from './destinations/destination-manage/destination-manage.component';
+import { TourTableComponent } from './tours/tour-table/tour-table.component';
+import { TourManageComponent } from './tours/tour-manage/tour-manage.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { DestinationManageComponent } from './destinations/destination-manage/de
     ClientTableComponent,
     ClientManageComponent,
     DestinationTableComponent,
-    DestinationManageComponent
+    DestinationManageComponent,
+    TourTableComponent,
+    TourManageComponent
   ],
   imports: [
     BrowserModule,
