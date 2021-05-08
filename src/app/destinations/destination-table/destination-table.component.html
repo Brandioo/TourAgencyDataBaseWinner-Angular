@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Destinations</h5>
+    <a class="btn btn-primary" routerLink="/destinations/manage">Add Destination</a>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let destination of destinations">
+        <th scope="row">{{destination.id}}</th>
+        <td>{{destination.name}}</td>
+        <td>{{destination.createdAt}}</td>
+        <td>
+          <a class="me-3" [routerLink]="['/destinations/manage', destination.id]">Edit</a>
+          <a (click)="onDeleteDestination(destination.id)">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
