@@ -1,0 +1,92 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Manage Tour</h5>
+    <form [formGroup]="tourForm" (ngSubmit)="onSubmit()">
+
+      <input type="hidden" formControlName="id"/>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" formControlName="title"/>
+        <span *ngIf="!tourForm.get('title')?.valid && tourForm.get('title')?.touched"
+              class="text-danger">Please enter a valid Title</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="days" class="form-label">Days</label>
+        <input type="number" class="form-control" id="days" formControlName="days"/>
+        <span *ngIf="!tourForm.get('days')?.valid && tourForm.get('days')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="maxPeople" class="form-label">Max-People</label>
+        <input type="number" class="form-control" id="maxPeople" formControlName="maxPeople"/>
+        <span *ngIf="!tourForm.get('maxPeople')?.valid && tourForm.get('maxPeople')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="minPeople" class="form-label">Min-People</label>
+        <input type="number" class="form-control" id="minPeople" formControlName="minPeople"/>
+        <span *ngIf="!tourForm.get('minPeople')?.valid && tourForm.get('minPeople')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" id="description" formControlName="description"/>
+        <span *ngIf="!tourForm.get('description')?.valid && tourForm.get('description')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="departure" class="form-label">Departure</label>
+        <input type="number" class="form-control" id="departure" formControlName="departure"/>
+        <span *ngIf="!tourForm.get('departure')?.valid && tourForm.get('departure')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="photo" class="form-label">Photo</label>
+        <input type="number" class="form-control" id="photo" formControlName="photo"/>
+        <span *ngIf="!tourForm.get('photo')?.valid && tourForm.get('photo')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="featured" class="form-label">Featured Or Not</label>
+        <input type="checkbox" class="form-control" id="featured" formControlName="featured"/>
+        <span *ngIf="!tourForm.get('featured')?.valid && tourForm.get('featured')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" id="price" formControlName="price"/>
+        <span *ngIf="!tourForm.get('price')?.valid && tourForm.get('price')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Quantity</label>
+        <input type="number" class="form-control" id="Quantity" formControlName="quantity"/>
+        <span *ngIf="!tourForm.get('quantity')?.valid && tourForm.get('quantity')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="travelType" class="form-label">Travel-Type</label>
+        <select class="form-select" id="travelType" aria-label="Default select example" formControlName="travelType">
+          <option *ngFor="let b of this.travelType" [value]="b.id">{{b.type}}</option>
+        </select>
+      </div>
+
+      <div>
+        <button [disabled]="!tourForm.valid" class="btn btn-primary">Save Tour</button>
+        <a routerLink="/tours" class="btn">Cancel</a>
+      </div>
+
+    </form>
+  </div>
+</div>

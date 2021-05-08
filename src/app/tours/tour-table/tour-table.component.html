@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Tours</h5>
+    <a class="btn btn-primary" routerLink="/tours/manage">Add Tours</a>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Days</th>
+        <th scope="col">MaxPeople</th>
+        <th scope="col">MinPeople</th>
+        <th scope="col">Description</th>
+        <th scope="col">Departure</th>
+        <th scope="col">Photo</th>
+        <th scope="col">Featured Or Not</th>
+        <th scope="col">Travel-Type</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let tour of tours">
+        <th scope="row">{{tour.id}}</th>
+        <td>{{tour.title}}</td>
+        <td>{{tour.days}}</td>
+        <td>{{tour.maxPeople}}</td>
+        <td>{{tour.minPeople}}</td>
+        <td>{{tour.description}}</td>
+        <td>{{tour.departure}}</td>
+        <td>{{tour.photo}}</td>
+        <td>{{tour.featured}}</td>
+        <td>{{tour.travelType}}</td>
+        <td>{{tour.price}}</td>
+        <td>{{tour.quantity}}</td>
+        <td>{{tour.createdAt}}</td>
+        <td>
+          <a class="me-3" [routerLink]="['/tours/manage', tour.id]">Edit</a>
+          <a (click)="onDeleteTours(tour.id)">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
