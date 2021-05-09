@@ -1,7 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import {ClientTableComponent} from './clients/client-table/client-table.component';
-import {ClientManageComponent} from './clients/client-manage/client-manage.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {DestinationTableComponent} from './destinations/destination-table/destination-table.component';
 import {DestinationManageComponent} from './destinations/destination-manage/destination-manage.component';
 import {TourTableComponent} from './tours/tour-table/tour-table.component';
@@ -22,4 +20,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
