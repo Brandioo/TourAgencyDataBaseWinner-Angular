@@ -9,6 +9,7 @@ import { DestinationTableComponent } from './destinations/destination-table/dest
 import { DestinationManageComponent } from './destinations/destination-manage/destination-manage.component';
 import { TourTableComponent } from './tours/tour-table/tour-table.component';
 import { TourManageComponent } from './tours/tour-manage/tour-manage.component';
+import { ReservationTableComponent } from './reservation-table/reservation-table.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TourManageComponent } from './tours/tour-manage/tour-manage.component';
     DestinationTableComponent,
     DestinationManageComponent,
     TourTableComponent,
-    TourManageComponent
+    TourManageComponent,
+    ReservationTableComponent
   ],
   imports: [
     BrowserModule,
