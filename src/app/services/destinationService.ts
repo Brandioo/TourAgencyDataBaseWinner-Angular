@@ -39,5 +39,6 @@ export interface SaveDestinationRequest {
 export interface Destination {
   id: number;
   name: string;
+  tourId: number;
   createdAt: Date;
 }

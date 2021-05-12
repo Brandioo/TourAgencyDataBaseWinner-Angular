@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,19 +8,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ClientService {
   private baseUrl = 'http://localhost:8080/api/clients';
   private httpHeaders = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    headers: new HttpHeaders({'Content-Type': 'application/json'}),
   };
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+  }
 
   getAll(): Observable<Client[]> {
-    return this.http.get<Client[]>(`${this.baseUrl}/all`);
+    return this.http.get<Client[]>(`${this.baseUrl}`);
   }
 
   getById(id: number): Observable<Client> {
     return this.http.get<Client>(`${this.baseUrl}/${id}`);
   }
 
-  save(client: Client): Observable<number> {
+  save(client: SaveClientRequest): Observable<number> {
     return this.http.post<number>(this.baseUrl, client, this.httpHeaders);
   }
 
@@ -31,6 +33,13 @@ export class ClientService {
 }
 
 export interface Client {
+  id: number;
+  name: string;
+  email: string;
+  phoneNumber: string;
+}
+
+export interface SaveClientRequest {
   id: number;
   name: string;
   email: string;

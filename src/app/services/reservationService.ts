@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Tour} from './tourService';
+import {Client} from './clientService';
 
 @Injectable({
   providedIn: 'root'
@@ -15,21 +17,30 @@ export class ReservationService {
   }
 
   getAll(): Observable<Reservation[]> {
-    return this.http.get<Reservation[]>(`${this.baseUrl}/all`);
+    return this.http.get<Reservation[]>(`${this.baseUrl}`);
   }
 
   getById(id: number): Observable<Reservation> {
     return this.http.get<Reservation>(`${this.baseUrl}/${id}`);
   }
 
-  // save(reservation: Reservation): Observable<number> {
-  //   return this.http.post<number>(this.baseUrl, reservation, this.httpHeaders);
-  // }
+  save(reservation: SaveReservationRequest): Observable<number> {
+    return this.http.post<number>(this.baseUrl, reservation, this.httpHeaders);
+  }
 
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+}
 
+export interface SaveReservationRequest {
+  id: number;
+  finalPrice: number;
+  comment: string;
+  checkInDate: Date;
+  checkOutDate: Date;
+  client: Client;
+  tour: Tour;
 }
 
 export interface Reservation {
@@ -38,4 +49,6 @@ export interface Reservation {
   comment: string;
   checkInDate: Date;
   checkOutDate: Date;
+  client: Client;
+  tour: Tour;
 }

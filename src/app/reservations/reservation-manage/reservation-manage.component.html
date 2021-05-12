@@ -1,0 +1,67 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Manage Reservations</h5>
+    <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+
+      <input type="hidden" formControlName="id"/>
+
+      <div class="mb-3">
+        <label for="tour" class="form-label">Tour</label>
+        <select class="form-select" id="tour" aria-label="Default select example"
+                formControlName="tourId">
+          <option *ngFor="let b of this.tours" [value]="b.id">{{b.title}}</option>
+        </select>
+        <span *ngIf="!reservationForm.get('tourId')?.valid && reservationForm.get('tourId')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="client" class="form-label">Client</label>
+        <select class="form-select" id="client" aria-label="Default select example"
+                formControlName="clientId">
+          <option *ngFor="let b of this.clients" [value]="b.id">{{b.name}}</option>
+        </select>
+        <span *ngIf="!reservationForm.get('clientId')?.valid && reservationForm.get('clientId')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="checkInDate" class="form-label">Check In Date</label>
+        <input type="date" class="form-control" id="checkInDate" formControlName="checkInDate"/>
+        <span *ngIf="!reservationForm.get('checkInDate')?.valid && reservationForm.get('checkInDate')?.touched"
+              class="text-danger">Please enter valid Date</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="checkOutDate" class="form-label">Check Out Date</label>
+        <input type="date" class="form-control" id="checkOutDate" formControlName="checkOutDate"/>
+        <span *ngIf="!reservationForm.get('checkOutDate')?.valid && reservationForm.get('checkOutDate')?.touched"
+              class="text-danger">Please enter valid Date</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="tourPrice" class="form-label">Tour Price</label>
+        <select class="form-select" id="tourPrice" aria-label="Default select example"
+                formControlName="tourId">
+          <option *ngFor="let b of this.tours" [value]="b.id">{{b.price}}</option>
+        </select>
+        <span *ngIf="!reservationForm.get('tourId')?.valid && reservationForm.get('tourId')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="comment" class="form-label">Comment</label>
+        <input type="text" class="form-control" id="comment" formControlName="comment"/>
+        <span *ngIf="!reservationForm.get('comment')?.valid && reservationForm.get('comment')?.touched"
+              class="text-danger">Please fill this row</span>
+      </div>
+
+      <div>
+        <button [disabled]="!reservationForm.valid" class="btn btn-primary">Save Reservation</button>
+        <a routerLink="/reservations" class="btn">Cancel</a>
+      </div>
+
+    </form>
+  </div>
+</div>

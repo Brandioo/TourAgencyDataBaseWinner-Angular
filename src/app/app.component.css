@@ -1,0 +1,77 @@
+/* Style the header */
+.header {
+  background-image: url(https://i.pinimg.com/originals/ff/46/3f/ff463f7a1f926bbde7d50f05b546a0ef.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px;
+  align: center;
+  color: #0aa9e7;
+}
+
+.center {
+  text-align: center;
+}
+
+.centerButton {
+  margin: auto;
+  text-align: center;
+  margin-top: 10px;
+
+}
+
+.embed-btn {
+  display: block;
+  width: 230px;
+  height: 230px;
+  margin-left: 10px;
+}
+
+embed {
+  fill: blue;
+  -webkit-animation: glowing-embed 1300ms infinite;
+  -moz-animation: glowing-embed 1300ms infinite;
+  -o-animation: glowing-embed 1300ms infinite;
+  animation: glowing-embed 1300ms infinite;
+}
+
+@-webkit-keyframes glowing-embed {
+  0% {
+    fill: #0091b2;
+    -webkit-filter: drop-shadow(0 0 3px #0091b2);
+  }
+  50% {
+    fill: #21c7ed;
+    -webkit-filter: drop-shadow(0 0 15px #21c7ed);
+  }
+  100% {
+    fill: #0091b2;
+    -webkit-filter: drop-shadow(0 0 3px #0091b2);
+  }
+}
+
+@keyframes glowingEmbed {
+  0% {
+    fill: #0091b2;
+    filter: drop-shadow(0 0 3px #0091b2);
+  }
+  50% {
+    fill: #21c7ed;
+    filter: drop-shadow(0 0 15px #21c7ed);
+  }
+  100% {
+    fill: #0091b2;
+    filter: drop-shadow(0 0 3px #0091b2);
+  }
+}
+
+
+.footer {
+  background-image: url(https://i.pinimg.com/originals/ff/46/3f/ff463f7a1f926bbde7d50f05b546a0ef.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-decoration-width: auto;
+  padding: 20px;
+  margin-top: 20px;
+  align: center;
+  color: #0aa9e7;
+}

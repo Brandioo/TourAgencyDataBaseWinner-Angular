@@ -7,7 +7,7 @@ import {Tour, TourService} from '../../services/tourService';
   styleUrls: ['./tour-table.component.css']
 })
 export class TourTableComponent implements OnInit {
-
+  showTours = true;
   tours: Tour[] = [];
 
   constructor(private tourService: TourService) {
@@ -31,5 +31,8 @@ export class TourTableComponent implements OnInit {
       });
     }
   }
-
+  // tslint:disable-next-line:typedef
+  onToggleShowTours() {
+    this.showTours = !this.showTours;
+  }
 }

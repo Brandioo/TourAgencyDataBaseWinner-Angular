@@ -34,30 +34,25 @@
       </div>
 
       <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <input type="text" class="form-control" id="description" formControlName="description"/>
+        <label for="description" class="form-label">Description(Optional)</label>
+        <textarea class="form-control" id="description" formControlName="description">
+
+        </textarea>
         <span *ngIf="!tourForm.get('description')?.valid && tourForm.get('description')?.touched"
               class="text-danger">Please enter valid Input</span>
       </div>
 
       <div class="mb-3">
         <label for="departure" class="form-label">Departure</label>
-        <input type="number" class="form-control" id="departure" formControlName="departure"/>
+        <input type="date" class="form-control" id="departure" formControlName="departure"/>
         <span *ngIf="!tourForm.get('departure')?.valid && tourForm.get('departure')?.touched"
               class="text-danger">Please enter valid Input</span>
       </div>
 
       <div class="mb-3">
         <label for="photo" class="form-label">Photo</label>
-        <input type="text" class="form-control" id="photo" formControlName="photo"/>
+        <input type="file" class="form-control" id="photo" formControlName="photo"/>
         <span *ngIf="!tourForm.get('photo')?.valid && tourForm.get('photo')?.touched"
-              class="text-danger">Please enter valid Input</span>
-      </div>
-
-      <div class="mb-3">
-        <label for="featured" class="form-label">Featured Or Not</label>
-        <input type="checkbox" class="form-control" id="featured" formControlName="featured"/>
-        <span *ngIf="!tourForm.get('featured')?.valid && tourForm.get('featured')?.touched"
               class="text-danger">Please enter valid Input</span>
       </div>
 
@@ -78,8 +73,27 @@
       <div class="mb-3">
         <label for="travelType" class="form-label">Travel-Type</label>
         <select class="form-select" id="travelType" aria-label="Default select example" formControlName="travelType">
-          <option *ngFor="let b of this.travelType" [value]="b.id">{{b.type}}</option>
+          <option *ngFor="let b of this.travelType" [value]="b">{{b}}</option>
         </select>
+        <span *ngIf="!tourForm.get('travelType')?.valid && tourForm.get('travelType')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="destination" class="form-label">Destination</label>
+        <select class="form-select" id="destination" aria-label="Default select example"
+                formControlName="destinationId">
+          <option *ngFor="let b of this.destinations" [value]="b.id">{{b.name}}</option>
+        </select>
+        <span *ngIf="!tourForm.get('destinationId')?.valid && tourForm.get('destinationId')?.touched"
+              class="text-danger">Please enter valid Input</span>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" formControlName="featured">
+        <label class="form-check-label" for="flexCheckDefault">
+          Featured?
+        </label>
       </div>
 
       <div>

@@ -1,13 +1,166 @@
+<body>
+<div class="header">
+  <p align="center">
+    <font face="courier" size="50">
+      {{ title }}<br> Welcome<br> <a class="logo" href="home">
+      <embed src="/assets/white_logo_transparent_background.png" [width]="150" [height]="170">
+    </a>
+
+    </font>
+  </p>
+</div>
+
+<nav *ngIf="backendService.isLoggedIn">
+  <div class="container">
+    <ul class="nav navbar-nav" routerLinkActive="active">
+      <li class="nav-item"><a class="nav-link" routerLink="home">| Home |</a></li>
+      <!--      <li class="nav-item"><a class="nav-link" routerLink="user">| User Profile |</a></li>-->
+      <!--      <li class="nav-item"><a class="nav-link" routerLink="listitem">| List Item |</a></li>-->
+      <!--      <li class="nav-item"><a class="nav-link" routerLink="todo">| About Us |</a></li>-->
+      <li class="nav-item"><a (click)=logOut()>| Log Out |</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="center">{{dateObj | date:'medium'}}</div>
+
+<br>
+
+<app-login *ngIf="!backendService.isLoggedIn"></app-login>
+
+
+<div class="centerButton">
+  <button mat-button (click)="openDialog()">Open dialog</button>
+</div>
+
+<style>
+  body {
+    margin: 0;
+  }
+
+  .wrapper {
+    display: flex;
+    height: 20vh;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button {
+    border: 1px transparent;
+    -webkit-border-radius: 40px;
+    border-radius: 40px;
+    color: #eeeeee;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 8px 30px;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 20px;
+    -webkit-animation: glowing 1300ms infinite;
+    -moz-animation: glowing 1300ms infinite;
+    -o-animation: glowing 1300ms infinite;
+    animation: glowing 1300ms infinite;
+  }
+
+  @-webkit-keyframes glowing {
+    0% {
+      background-color: #0091b2;
+      -webkit-box-shadow: 0 0 3px #0091b2;
+    }
+    50% {
+      background-color: #21c7ed;
+      -webkit-box-shadow: 0 0 15px #21c7ed;
+    }
+    100% {
+      background-color: #0091b2;
+      -webkit-box-shadow: 0 0 3px #0091b2;
+    }
+  }
+
+  @keyframes glowing {
+    0% {
+      background-color: #0091b2;
+      box-shadow: 0 0 3px #0091b2;
+    }
+    50% {
+      background-color: #21c7ed;
+      box-shadow: 0 0 15px #21c7ed;
+    }
+    100% {
+      background-color: #0091b2;
+      box-shadow: 0 0 3px #0091b2;
+    }
+  }
+
+  .embed-btn {
+    display: block;
+    width: 230px;
+    height: 230px;
+    margin-left: 10px;
+  }
+
+  embed {
+    fill: blue;
+    -webkit-animation: glowing-embed 1300ms infinite;
+    -moz-animation: glowing-embed 1300ms infinite;
+    -o-animation: glowing-embed 1300ms infinite;
+    animation: glowing-embed 1300ms infinite;
+  }
+
+  @-webkit-keyframes glowing-embed {
+    0% {
+      fill: #0091b2;
+      -webkit-filter: drop-shadow(0 0 3px #0091b2);
+    }
+    50% {
+      fill: #21c7ed;
+      -webkit-filter: drop-shadow(0 0 15px #21c7ed);
+    }
+    100% {
+      fill: #0091b2;
+      -webkit-filter: drop-shadow(0 0 3px #0091b2);
+    }
+  }
+
+  @keyframes glowingEmbed {
+    0% {
+      fill: #0091b2;
+      filter: drop-shadow(0 0 3px #0091b2);
+    }
+    50% {
+      fill: #21c7ed;
+      filter: drop-shadow(0 0 15px #21c7ed);
+    }
+    100% {
+      fill: #0091b2;
+      filter: drop-shadow(0 0 3px #0091b2);
+    }
+  }
+</style>
+
+
 <div class="page">
   <div class="container">
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                  aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page"
+                   routerLinkActive="active"
+                   [routerLinkActiveOptions]="{exact: true}"
+                   routerLink="/home">Home</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" aria-current="page"
                    routerLinkActive="active"
@@ -43,3 +196,17 @@
     </div>
   </div>
 </div>
+
+
+<div class="footer">
+
+  <p align="center">
+    <font face="courier" size="50">
+
+      This Is It
+    </font>
+  </p>
+</div>
+
+
+</body>

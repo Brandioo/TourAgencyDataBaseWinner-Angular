@@ -1,0 +1,79 @@
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>Develop across all platforms</h3>
+  <p>Learn one way to build applications with Angular and reuse your code and abilities to build
+    apps for any deployment target. For web, mobile web, native mobile and native desktop.</p>
+
+  <h3>Speed &amp; Performance</h3>
+  <p>Achieve the maximum speed possible on the Web Platform today, and take it further, via Web
+    Workers and server-side rendering. Angular puts you in control over scalability. Meet huge
+    data requirements by building data models on RxJS, Immutable.js or another push-model.</p>
+
+  <h3>Incredible tooling</h3>
+  <p>Build features quickly with simple, declarative templates. Extend the template language with
+    your own components and use a wide array of existing components. Get immediate Angular-specific
+    help and feedback with nearly every IDE and editor. All this comes together so you can focus
+    on building amazing apps rather than trying to make the code work.</p>
+
+  <h3>Loved by millions</h3>
+  <p>From prototype through global deployment, Angular delivers the productivity and scalable
+    infrastructure that supports Google's largest applications.</p>
+
+  <h3>What is Angular?</h3>
+
+  <p>Angular is a platform that makes it easy to build applications with the web. Angular
+    combines declarative templates, dependency injection, end to end tooling, and integrated
+    best practices to solve development challenges. Angular empowers developers to build
+    applications that live on the web, mobile, or the desktop</p>
+
+  <h3>Architecture overview</h3>
+
+  <p>Angular is a platform and framework for building client applications in HTML and TypeScript.
+    Angular is itself written in TypeScript. It implements core and optional functionality as a
+    set of TypeScript libraries that you import into your apps.</p>
+
+  <p>The basic building blocks of an Angular application are NgModules, which provide a compilation
+    context for components. NgModules collect related code into functional sets; an Angular app is
+    defined by a set of NgModules. An app always has at least a root module that enables
+    bootstrapping, and typically has many more feature modules.</p>
+
+  <p>Components define views, which are sets of screen elements that Angular can choose among and
+    modify according to your program logic and data. Every app has at least a root component.</p>
+
+  <p>Components use services, which provide specific functionality not directly related to views.
+    Service providers can be injected into components as dependencies, making your code modular,
+    reusable, and efficient.</p>
+
+  <p>Both components and services are simply classes, with decorators that mark their type and
+    provide metadata that tells Angular how to use them.</p>
+
+  <p>The metadata for a component class associates it with a template that defines a view. A
+    template combines ordinary HTML with Angular directives and binding markup that allow Angular
+    to modify the HTML before rendering it for display.</p>
+
+  <p>The metadata for a service class provides the information Angular needs to make it available
+    to components through Dependency Injection (DI).</p>
+
+  <p>An app's components typically define many views, arranged hierarchically. Angular provides
+    the Router service to help you define navigation paths among views. The router provides
+    sophisticated in-browser navigational capabilities.</p>
+
+  <p>As a student of this course you also get free access to our “<strong>Academind Community</strong>” on Discord:
+    <a href="https://discord.gg/gxvEWGU" rel="noopener noreferrer" target="_blank">https://discord.gg/gxvEWGU</a>
+  </p><p>There, you can find <strong>like-minded people</strong>, <strong>discuss</strong> issues,
+  <strong>help each other</strong>, share progress, successes and ideas and simply <strong>have a good time</strong>!
+</p><p>I believe that you learn the most if you <strong>don’t learn alone
+</strong>but find learning partners and other people with similar interests. Our community is a great place for this - it’s the perfect complimentary resource for this course.</p>
+  <p>Joining it is of course <strong>free and 100% optional</strong>.</p>
+
+  <p>In the next lecture, we're going to&nbsp;build our first little app!</p><p>If the CLI&nbsp;prompts you to<strong> answer some questions </strong>(some versions do that), you can simply hit <code><strong>ENTER</strong></code>&nbsp;for all questions. This will accept the default settings which are fine for this course.</p>
+  <p>The CLI&nbsp;generates a different welcome screen than you're going to see in my video though. No worries, you'll still be able to follow along without issues!&nbsp;Just make sure to code along <strong>so that your code equals mine</strong> - Angular itself didn't change a bit :)</p>
+  <p>-----</p><p>If you want to <strong>dive deeper into the CLI</strong>&nbsp;and learn more about its usage, have a look at its official <strong>documentation</strong>:&nbsp;<a href="https://github.com/angular/angular-cli/wiki" rel="noopener noreferrer" target="_blank">https://github.com/angular/angular-cli/wiki</a></p><p><strong>You encountered issues during the installation of the CLI or setup of a new Angular project?</strong>
+</p><p>A lot of problems are solved by making sure you're using the latest version of NodeJS, npm and the CLI itself.</p><p><strong>Updating NodeJS:</strong></p><p>Go to nodejs.org and download the latest version - uninstall (all) installed versions on your machine first.</p><p><strong>Updating npm:</strong></p><p>Run <code>[sudo] npm install -g npm</code>&nbsp; (<code>sudo</code>&nbsp; is only required on Mac/&nbsp;Linux)</p>
+  <p><strong>Updating the CLI</strong></p><p><code>[sudo] npm uninstall -g angular-cli @angular/cli</code>&nbsp;</p><p><code>npm cache verify</code>&nbsp;</p><p><code>[sudo] npm install -g @angular/cli</code>&nbsp;</p><p><strong>Here are some common issues &amp;&nbsp;solutions:</strong></p><ol><li><p><strong>Creation of a new project takes forever (longer than 3 minutes)</strong><br>That happens on Windows from time to time =&gt;&nbsp;Try running the command line as administrator</p></li><li>
+  <p><strong>You get an EADDR error (Address already in use)</strong><br>You might already have another ng serve process running - make sure to quit that or use <code>ng serve --port ANOTHERPORT</code>&nbsp;&nbsp;to serve your project on a new port</p></li><li><p><strong>My changes are not reflected in the browser (App is not compiling)</strong><br>Check if the window running <code>ng serve</code>&nbsp; displays an error. If that's not the case, make sure you're using the latest CLI&nbsp;version and try restarting your CLI</p></li></ol>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button mat-dialog-close="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>
