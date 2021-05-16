@@ -1,2 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+
+button {
+  padding: 7px;
+  background-color: #0ea09b;
+  color: white;
+  border-radius: 5px;
+}
+
+.border{
+  margin: auto;
+  border: 1px solid;
+  padding: 5px;
+  box-shadow: 5px 10px teal;
+  width: 220px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+

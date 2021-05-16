@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Tour, TourService, TravelType} from '../../services/tourService';
 import {Destination, DestinationService} from '../../services/destinationService';
+import {HttpEventType, HttpResponse} from '@angular/common/http';
+import {UploadService} from '../../services/uploadService';
 
 @Component({
   selector: 'app-tour-manage',
@@ -17,7 +19,8 @@ export class TourManageComponent implements OnInit {
   constructor(private tourService: TourService,
               private destinationService: DestinationService,
               private router: Router,
-              private activeRoute: ActivatedRoute) {
+              private activeRoute: ActivatedRoute,
+              private uploadService: UploadService) {
   }
 
   ngOnInit(): void {
@@ -27,13 +30,38 @@ export class TourManageComponent implements OnInit {
           this.tourForm = this.createTourForm(result);
         });
     } else {
-      this.tourForm = this.createTourForm({} as Tour);
+      this.tourForm = this.createTourForm({
+        destination: {}
+      } as Tour);
     }
 
     this.destinationService.getAll().subscribe(response => {
       this.destinations = response;
     });
   }
+
+  uploadFile(event: any): void {
+    const file: File | null = event.target.files.item(0);
+    if (!file) {
+      return;
+    }
+
+    this.uploadService.upload(file).subscribe(
+      (httpEvent: any) => {
+        if (httpEvent.type === HttpEventType.UploadProgress) {
+          console.log(Math.round(100 * event.loaded / event.total));
+        } else if (httpEvent instanceof HttpResponse) {
+          this.tourForm.patchValue({
+            photo: file.name,
+          });
+        }
+      },
+      (err: any) => {
+        console.log(err);
+        alert('Error uploading file');
+      });
+  }
+
 
   createTourForm(tour: Tour): FormGroup {
     return new FormGroup({
@@ -49,7 +77,7 @@ export class TourManageComponent implements OnInit {
       travelType: new FormControl(tour.travelType, Validators.required),
       price: new FormControl(tour.price, [Validators.min(1)]),
       quantity: new FormControl(tour.quantity, Validators.required),
-      destination: new FormControl(tour.destination, Validators.required)
+      destinationId: new FormControl(tour.destination.id, Validators.required)
     });
   }
 

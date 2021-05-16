@@ -10,6 +10,10 @@
               class="text-danger">Please enter a valid name</span>
       </div>
 
+      <div class="mb-3">
+        <label for="photo" class="form-label">Photo</label>
+        <input type="file" class="form-control" id="photo" (change)="uploadFile($event)" />
+      </div>
 
       <div>
         <button [disabled]="!destinationForm.valid" class="btn btn-primary">Save Destination</button>

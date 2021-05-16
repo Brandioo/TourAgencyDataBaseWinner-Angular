@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Reservations</h5>
+    <a class="btn btn-primary" routerLink="/reservations/manage">Add Reservation</a>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tour</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Check-In-Date</th>
+        <th scope="col">Check-Out-Date</th>
+        <th scope="col">Final Price</th>
+        <th scope="col">Comment</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let reservation of reservations">
+        <th scope="row">{{reservation.id}}</th>
+        <td>{{reservation.tour.title}}</td>
+        <td>{{reservation.client.name}}</td>
+        <td>{{reservation.client.email}}</td>
+        <td>{{reservation.client.phoneNumber}}</td>
+        <td>{{reservation.checkInDate}}</td>
+        <td>{{reservation.checkOutDate}}</td>
+        <td>{{reservation.finalPrice}}</td>
+        <td>{{reservation.comment}}</td>
+        <td>
+          <a class="me-3" [routerLink]="['/reservations/manage', reservation.id]">Edit</a>
+          <a (click)="onDeleteReservation(reservation.id)">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

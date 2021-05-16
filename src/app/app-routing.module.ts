@@ -9,6 +9,10 @@ import {HomeComponent} from './home/home.component';
 import {ClientsTableComponent} from './clients/clients-table/clients-table.component';
 import {ReservationManageComponent} from './reservations/reservation-manage/reservation-manage.component';
 import {ClientManageComponent} from './clients/client-manage/client-manage.component';
+import {AboutUsComponent} from './about-us/about-us.component';
+import {ShopOnlineComponent} from './shop/ShopOnline.component';
+import {BannerTableComponent} from './banners/banner-table/banner-table.component';
+import {BannerManageComponent} from './banners/banner-manage/banner-manage.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/destinations', pathMatch: 'full'},
@@ -24,7 +28,12 @@ const routes: Routes = [
   {path: 'clients', component: ClientsTableComponent},
   {path: 'clients/manage', component: ClientManageComponent},
   {path: 'clients/manage/:id', component: ClientManageComponent},
-  {path: 'home', component: HomeComponent}
+  {path: 'banners', component: BannerTableComponent},
+  {path: 'banners/manage', component: BannerManageComponent},
+  {path: 'banners/manage/:id', component: BannerManageComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'about', component: AboutUsComponent},
+  {path: 'shop', component: ShopOnlineComponent},
 ];
 
 

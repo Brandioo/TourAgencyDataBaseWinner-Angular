@@ -6,25 +6,42 @@
       <input type="hidden" formControlName="id"/>
 
       <div class="mb-3">
-        <label for="tour" class="form-label">Tour</label>
-        <select class="form-select" id="tour" aria-label="Default select example"
-                formControlName="tourId">
+        <label for="tourId" class="form-label">Tour</label>
+        <select class="form-select" id="tourId" aria-label="Default select example"
+                (change)="updatePrice($event)" formControlName="tourId">
           <option *ngFor="let b of this.tours" [value]="b.id">{{b.title}}</option>
         </select>
         <span *ngIf="!reservationForm.get('tourId')?.valid && reservationForm.get('tourId')?.touched"
               class="text-danger">Please enter valid Input</span>
       </div>
+------------------------------------------------------------------------------------------------------------------------
+      <h3 class="card-title">Manage Client</h3>
+      <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+        <input type="hidden" formControlName="id"/>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name"/>
+          <span *ngIf="!reservationForm.get('name')?.valid && reservationForm.get('name')?.touched"
+                class="text-danger">Please enter a valid name</span>
+        </div>
 
-      <div class="mb-3">
-        <label for="client" class="form-label">Client</label>
-        <select class="form-select" id="client" aria-label="Default select example"
-                formControlName="clientId">
-          <option *ngFor="let b of this.clients" [value]="b.id">{{b.name}}</option>
-        </select>
-        <span *ngIf="!reservationForm.get('clientId')?.valid && reservationForm.get('clientId')?.touched"
-              class="text-danger">Please enter valid Input</span>
-      </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" id="email" formControlName="email"/>
+          <span *ngIf="!reservationForm.get('email')?.valid && reservationForm.get('email')?.touched"
+                class="text-danger">Please enter a valid Email</span>
+        </div>
 
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Phone-Number</label>
+          <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber"/>
+          <span *ngIf="!reservationForm.get('phoneNumber')?.valid && reservationForm.get('phoneNumber')?.touched"
+                class="text-danger">Please enter a valid phoneNumber</span>
+        </div>
+
+
+      </form>
+      ------------------------------------------------------------------------------------------------------------------------
       <div class="mb-3">
         <label for="checkInDate" class="form-label">Check In Date</label>
         <input type="date" class="form-control" id="checkInDate" formControlName="checkInDate"/>
@@ -39,14 +56,21 @@
               class="text-danger">Please enter valid Date</span>
       </div>
 
+<!--      <div class="mb-3">-->
+<!--        <label for="tourPrice" class="form-label">Tour Price</label>-->
+<!--        <select class="form-select" id="tourPrice" aria-label="Default select example"-->
+<!--                formControlName="tourPrice">-->
+<!--          <option *ngFor="let b of this.tours" [value]="b.id">{{b.price}}</option>-->
+<!--        </select>-->
+<!--        <span *ngIf="!reservationForm.get('tourId')?.valid && reservationForm.get('tourId')?.touched"-->
+<!--              class="text-danger">Please enter valid Input</span>-->
+<!--      </div>-->
+
       <div class="mb-3">
-        <label for="tourPrice" class="form-label">Tour Price</label>
-        <select class="form-select" id="tourPrice" aria-label="Default select example"
-                formControlName="tourId">
-          <option *ngFor="let b of this.tours" [value]="b.id">{{b.price}}</option>
-        </select>
-        <span *ngIf="!reservationForm.get('tourId')?.valid && reservationForm.get('tourId')?.touched"
-              class="text-danger">Please enter valid Input</span>
+        <label for="finalPrice" class="form-label">Price</label>
+        <input type="number" class="form-control" id="finalPrice" formControlName="finalPrice"/>
+        <span *ngIf="!reservationForm.get('finalPrice')?.valid && reservationForm.get('finalPrice')?.touched"
+              class="text-danger">Please enter valid Price</span>
       </div>
 
 

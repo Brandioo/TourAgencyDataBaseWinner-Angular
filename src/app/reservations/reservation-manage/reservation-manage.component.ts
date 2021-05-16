@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Reservation, ReservationService} from '../../services/reservationService';
 import {Tour, TourService} from '../../services/tourService';
 import {Client, ClientService} from '../../services/clientService';
+import {Destination} from '../../services/destinationService';
 
 @Component({
   selector: 'app-reservation-manage',
@@ -14,31 +15,33 @@ export class ReservationManageComponent implements OnInit {
 
   reservationForm = new FormGroup({});
   tours: Tour[] = [];
-  clients: Client[] = [];
+  clients: Tour[] = [];
 
   constructor(private reservationService: ReservationService,
               private tourService: TourService,
-              private clientService: ClientService,
               private router: Router,
               private activeRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-
     if (this.activeRoute.snapshot.params.id) {
       this.reservationService.getById(this.activeRoute.snapshot.params.id)
         .subscribe((result) => {
           this.reservationForm = this.createReservationForm(result);
         });
     } else {
-      this.reservationForm = this.createReservationForm({} as Reservation);
+      this.reservationForm = this.createReservationForm({
+        client: {},
+        tour: {}
+      } as Reservation);
     }
+
 
     this.tourService.getAll().subscribe(response => {
       this.tours = response;
     });
 
-    this.clientService.getAll().subscribe(response => {
+    this.tourService.getAll().subscribe(response => {
       this.clients = response;
     });
   }
@@ -46,14 +49,25 @@ export class ReservationManageComponent implements OnInit {
   createReservationForm(reservation: Reservation): FormGroup {
     return new FormGroup({
       id: new FormControl(reservation.id),
-      tour: new FormControl(reservation.tour, Validators.required),
-      client: new FormControl(reservation.client, Validators.required),
-      finalPrice: new FormControl(reservation.tour.price, Validators.required),
+      tourId: new FormControl(reservation.tour.id, Validators.required),
+      name: new FormControl(reservation.client.name, Validators.required),
+      email: new FormControl(reservation.client.email, Validators.required),
+      phoneNumber: new FormControl(reservation.client.phoneNumber, Validators.required),
+      finalPrice: new FormControl(reservation.finalPrice, Validators.required),
       comment: new FormControl(reservation.comment, Validators.required),
       checkInDate: new FormControl(reservation.checkInDate, Validators.required),
       checkOutDate: new FormControl(reservation.checkOutDate, Validators.required),
     })
       ;
+  }
+
+  updatePrice(event: any): void {
+    const tourSelectedId = event.currentTarget.value;
+    this.tourService.getById(tourSelectedId).subscribe(response => {
+      this.reservationForm.patchValue({
+        finalPrice: response.price,
+      });
+    });
   }
 
   onSubmit(): void {
@@ -62,5 +76,4 @@ export class ReservationManageComponent implements OnInit {
         return this.router.navigate(['/reservations']);
       });
   }
-
 }

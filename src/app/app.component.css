@@ -12,6 +12,25 @@
   text-align: center;
 }
 
+.container {
+  overflow: hidden;
+  align: center;
+  background-color: #d8fff4;
+}
+
+.a {
+  align: center;
+}
+
+.container a {
+  /*float: left;*/
+  align: center;
+  display: block;
+  color: #39a98f;
+  text-align: center;
+  padding: 14px 16px;
+}
+
 .centerButton {
   margin: auto;
   text-align: center;
@@ -74,4 +93,18 @@ embed {
   margin-top: 20px;
   align: center;
   color: #0aa9e7;
+}
+
+div{
+  background-image: url(https://www.pinterest.com/pin/380483868523363881/);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.collapse{
+  align: center;
+}
+
+.ul{
+  align: center;
 }

@@ -7,6 +7,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
+        <th scope="col">Photo</th>
         <th scope="col">Created At</th>
         <th scope="col">Actions</th>
       </tr>
@@ -15,6 +16,7 @@
       <tr *ngFor="let destination of destinations">
         <th scope="row">{{destination.id}}</th>
         <td>{{destination.name}}</td>
+        <td><img src="http://localhost:8080/api/files/{{destination.photo}}" alt="{{destination.photo}}" width="125"/></td>
         <td>{{destination.createdAt}}</td>
         <td>
           <a class="me-3" [routerLink]="['/destinations/manage', destination.id]">Edit</a>

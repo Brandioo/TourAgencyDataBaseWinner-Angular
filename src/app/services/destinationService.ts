@@ -33,12 +33,14 @@ export class DestinationService{
 export interface SaveDestinationRequest {
   id: number;
   name: string;
+  photo: string;
 }
 
 
 export interface Destination {
   id: number;
   name: string;
+  photo: string;
   tourId: number;
   createdAt: Date;
 }

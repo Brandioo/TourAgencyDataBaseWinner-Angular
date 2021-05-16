@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {BackendService} from '../service/backend.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, public backendService: BackendService ) { }
 
   ngOnInit(): void {
   }
 
+  // tslint:disable-next-line:typedef
+  logOut() {
+    const answer = window.confirm('Are You Sure?');
+    if (answer) {
+      this.backendService.isLoggedIn = false;
+      this.router.navigateByUrl('/');
+    }
+  }
 }

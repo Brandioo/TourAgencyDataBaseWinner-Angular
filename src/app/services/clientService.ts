@@ -37,6 +37,7 @@ export interface Client {
   name: string;
   email: string;
   phoneNumber: string;
+  createdAt: Date;
 }
 
 export interface SaveClientRequest {
@@ -44,4 +45,5 @@ export interface SaveClientRequest {
   name: string;
   email: string;
   phoneNumber: string;
+  createdAt: Date;
 }

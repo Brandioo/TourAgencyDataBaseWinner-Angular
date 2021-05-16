@@ -17,6 +17,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from './login/login.component';
 import {ReservationManageComponent} from './reservations/reservation-manage/reservation-manage.component';
 import { ClientManageComponent } from './clients/client-manage/client-manage.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import {ShopOnlineComponent} from './shop/ShopOnline.component';
+import { BannerManageComponent } from './banners/banner-manage/banner-manage.component';
+import { BannerTableComponent } from './banners/banner-table/banner-table.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import { ClientManageComponent } from './clients/client-manage/client-manage.com
     LoginComponent,
     DialogContentExampleDialog,
     ClientManageComponent,
+    AboutUsComponent,
+    ShopOnlineComponent,
+    BannerManageComponent,
+    BannerTableComponent,
 
   ],
   imports: [

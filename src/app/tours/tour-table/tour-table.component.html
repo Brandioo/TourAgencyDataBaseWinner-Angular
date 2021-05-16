@@ -18,26 +18,27 @@
         <th scope="col">Price</th>
         <th scope="col">Quantity</th>
         <th scope="col">Destination</th>
-        <th scope="col">Created At</th>
+        <!--        <th scope="col">Created At</th>-->
         <th scope="col">Actions</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let tour of tours">
         <th scope="row">{{tour.id}}</th>
+
         <td>{{tour.title}}</td>
         <td>{{tour.days}}</td>
         <td>{{tour.maxPeople}}</td>
         <td>{{tour.minPeople}}</td>
         <td>{{tour.description}}</td>
         <td>{{tour.departure}}</td>
-        <td>{{tour.photo}}</td>
+        <td><img src="http://localhost:8080/api/files/{{tour.photo}}" alt="{{tour.photo}}" width="125"/></td>
         <td>{{tour.featured}}</td>
         <td>{{tour.travelType}}</td>
         <td>{{tour.price}}</td>
         <td>{{tour.quantity}}</td>
         <td>{{tour.destination.name}}</td>
-        <td>{{tour.createdAt}}</td>
+        <!--        <td>{{tour.createdAt}}</td>-->
         <td>
           <a class="me-3" [routerLink]="['/tours/manage', tour.id]">Edit</a>
           <a (click)="onDeleteTours(tour.id)">Delete</a>
