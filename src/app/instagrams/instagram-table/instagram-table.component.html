@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Instagram</h5>
+    <a class="btn btn-primary" routerLink="/instagrams/manage">Add Instagram</a>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Photo</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let instagram of instagrams">
+        <th scope="row">{{instagram.id}}</th>
+        <td>{{instagram.name}}</td>
+        <td><img src="http://localhost:8080/api/files/{{instagram.photo}}" alt="{{instagram.photo}}" width="125"/></td>
+        <td>
+          <a class="me-3" [routerLink]="['/instagrams/manage', instagram.id]">Edit</a>
+          <a (click)="onDeleteInstagram(instagram.id)">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

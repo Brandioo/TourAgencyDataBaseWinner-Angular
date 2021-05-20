@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Blog</h5>
+    <a class="btn btn-primary" routerLink="/blogs/manage">Add Blog</a>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Content</th>
+        <th scope="col">Photo</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let blog of blogs">
+        <th scope="row">{{blog.id}}</th>
+        <td>{{blog.title}}</td>
+        <td>{{blog.author}}</td>
+        <td>{{blog.content}}</td>
+        <td>
+          <img src="http://localhost:8080/api/files/{{blog.photo}}" alt="{{blog.photo}}" width="125"/>
+        </td>
+        <td>
+          <a class="me-3" [routerLink]="['/blogs/manage', blog.id]">Edit</a>
+          <a (click)="onDeleteBlog(blog.id)">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

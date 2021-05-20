@@ -13,6 +13,10 @@ import {AboutUsComponent} from './about-us/about-us.component';
 import {ShopOnlineComponent} from './shop/ShopOnline.component';
 import {BannerTableComponent} from './banners/banner-table/banner-table.component';
 import {BannerManageComponent} from './banners/banner-manage/banner-manage.component';
+import {BlogTableComponent} from './blogs/blog-table/blog-table.component';
+import {BlogManageComponent} from './blogs/blog-manage/blog-manage.component';
+import {InstagramTableComponent} from './instagrams/instagram-table/instagram-table.component';
+import {InstagramManageComponent} from './instagrams/instagram-manage/instagram-manage.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/destinations', pathMatch: 'full'},
@@ -31,6 +35,12 @@ const routes: Routes = [
   {path: 'banners', component: BannerTableComponent},
   {path: 'banners/manage', component: BannerManageComponent},
   {path: 'banners/manage/:id', component: BannerManageComponent},
+  {path: 'blogs', component: BlogTableComponent},
+  {path: 'blogs/manage', component: BlogManageComponent},
+  {path: 'blogs/manage/:id', component: BlogManageComponent},
+  {path: 'instagrams', component: InstagramTableComponent},
+  {path: 'instagrams/manage', component: InstagramManageComponent},
+  {path: 'instagrams/manage/:id', component: InstagramManageComponent},
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutUsComponent},
   {path: 'shop', component: ShopOnlineComponent},

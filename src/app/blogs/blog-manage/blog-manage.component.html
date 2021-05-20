@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Manage Blog</h5>
+    <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+      <input type="hidden" formControlName="id"/>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" formControlName="title"/>
+        <span *ngIf="!blogForm.get('title')?.valid && blogForm.get('title')?.touched"
+              class="text-danger">Please enter a valid title</span>
+      </div>
+      <div class="mb-3">
+        <label for="author" class="form-label">Author</label>
+        <input type="text" class="form-control" id="author" formControlName="author"/>
+        <span *ngIf="!blogForm.get('author')?.valid && blogForm.get('author')?.touched"
+              class="text-danger">Please enter a valid Author</span>
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <textarea class="form-control" id="content" formControlName="content"></textarea>
+        <span *ngIf="!blogForm.get('content')?.valid && blogForm.get('content')?.touched"
+              class="text-danger">Please enter a valid content</span>
+      </div>
+      <div class="mb-3">
+        <label for="photo" class="form-label">Photo</label>
+        <input type="file" class="form-control" id="photo" (change)="uploadFile($event)"/>
+      </div>
+      <div>
+        <button [disabled]="!blogForm.valid" class="btn btn-primary">Save Blog</button>
+        <a routerLink="/blogs" class="btn">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

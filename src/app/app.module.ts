@@ -21,6 +21,10 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import {ShopOnlineComponent} from './shop/ShopOnline.component';
 import { BannerManageComponent } from './banners/banner-manage/banner-manage.component';
 import { BannerTableComponent } from './banners/banner-table/banner-table.component';
+import { BlogManageComponent } from './blogs/blog-manage/blog-manage.component';
+import { BlogTableComponent } from './blogs/blog-table/blog-table.component';
+import { InstagramTableComponent } from './instagrams/instagram-table/instagram-table.component';
+import { InstagramManageComponent } from './instagrams/instagram-manage/instagram-manage.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { BannerTableComponent } from './banners/banner-table/banner-table.compon
     ShopOnlineComponent,
     BannerManageComponent,
     BannerTableComponent,
+    BlogManageComponent,
+    BlogTableComponent,
+    InstagramTableComponent,
+    InstagramManageComponent,
 
   ],
   imports: [
