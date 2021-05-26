@@ -17,6 +17,8 @@ import {BlogTableComponent} from './blogs/blog-table/blog-table.component';
 import {BlogManageComponent} from './blogs/blog-manage/blog-manage.component';
 import {InstagramTableComponent} from './instagrams/instagram-table/instagram-table.component';
 import {InstagramManageComponent} from './instagrams/instagram-manage/instagram-manage.component';
+import {TeamMemberTableComponent} from './teammembers/team-member-table/team-member-table.component';
+import {TeamMemberManageComponent} from './teammembers/team-member-manage/team-member-manage.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/destinations', pathMatch: 'full'},
@@ -41,6 +43,9 @@ const routes: Routes = [
   {path: 'instagrams', component: InstagramTableComponent},
   {path: 'instagrams/manage', component: InstagramManageComponent},
   {path: 'instagrams/manage/:id', component: InstagramManageComponent},
+  {path: 'teamMembers', component: TeamMemberTableComponent},
+  {path: 'teamMembers/manage', component: TeamMemberManageComponent},
+  {path: 'teamMembers/manage/:id', component: TeamMemberManageComponent},
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutUsComponent},
   {path: 'shop', component: ShopOnlineComponent},

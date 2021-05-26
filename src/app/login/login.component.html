@@ -1,19 +1,46 @@
-
 <p><font face="Times" size="5">Login Option Only By GONLINE</font></p>
-
 
 
 <div class="border">
 
-  <img align="center" src="https://cdn.dribbble.com/users/2095589/screenshots/4166422/user_1.png?compress=1&resize=400x300" class="avatar" width="200" height="140">
-  <form method="get" align="center" #f="ngForm" (ngSubmit)="onAddForm(f)">
-    <input type="text" ngModel name="username" placeholder="UserName" required>
-    <br>
-    <br>
-    <input type="password" ngModel name="password" placeholder="Password" required>
-    <br>
-    <button type="submit">Add</button>
+  <img align="center"
+       src="https://cdn.dribbble.com/users/2095589/screenshots/4166422/user_1.png?compress=1&resize=400x300"
+       class="avatar" width="200" height="140">
+  <form id="loginForm"
+        action="../home/home.component.html"
+        method="get">
+    <div class="content">
+      <div class="column">
+        <input id="loginFormEmailInput"
+               value="email"
+               type="email"
+               name="username"
+               placeholder="Username">
+      </div>
 
+      <br>
 
+      <div class="column">
+        <input value="password"
+               id="loginFormPasswordInput"
+               type="password"
+               name="password"
+               placeholder="Password">
+      </div>
+      <br>
+      <!--    <button type="submit">Add</button>-->
+      <!--    <br>-->
+      <!--    <button type="reset" value="Reset">Reset</button>-->
+
+      <div class="column btn-container">
+        <button (click)="login()" type="submit">Login</button>
+        <input type="reset" value="Reset">
+      </div>
+    </div>
   </form>
 </div>
+
+<script type="module" src="./login.js"></script>
+
+
+

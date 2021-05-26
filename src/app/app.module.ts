@@ -25,6 +25,8 @@ import { BlogManageComponent } from './blogs/blog-manage/blog-manage.component';
 import { BlogTableComponent } from './blogs/blog-table/blog-table.component';
 import { InstagramTableComponent } from './instagrams/instagram-table/instagram-table.component';
 import { InstagramManageComponent } from './instagrams/instagram-manage/instagram-manage.component';
+import { TeamMemberManageComponent } from './teammembers/team-member-manage/team-member-manage.component';
+import { TeamMemberTableComponent } from './teammembers/team-member-table/team-member-table.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { InstagramManageComponent } from './instagrams/instagram-manage/instagra
     BlogTableComponent,
     InstagramTableComponent,
     InstagramManageComponent,
+    TeamMemberManageComponent,
+    TeamMemberTableComponent,
 
   ],
   imports: [

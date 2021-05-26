@@ -12,8 +12,8 @@ export class AppComponent {
   title = 'Simplicity Is Here';
 
   // myName = 'SDA';
-  user = '';
-  password = '';
+  user = 'Brand';
+  password = 'Good';
   dateObj = new Date();
   isLoggedIn = false;
 
