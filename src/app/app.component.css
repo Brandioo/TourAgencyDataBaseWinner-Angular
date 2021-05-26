@@ -12,6 +12,13 @@
   text-align: center;
 }
 
+
+#fullPage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .container {
   overflow: hidden;
   align: center;

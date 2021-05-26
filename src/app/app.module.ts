@@ -16,17 +16,54 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from './login/login.component';
 import {ReservationManageComponent} from './reservations/reservation-manage/reservation-manage.component';
-import { ClientManageComponent } from './clients/client-manage/client-manage.component';
-import { AboutUsComponent } from './about-us/about-us.component';
+import {ClientManageComponent} from './clients/client-manage/client-manage.component';
+import {AboutUsComponent} from './about-us/about-us.component';
 import {ShopOnlineComponent} from './shop/ShopOnline.component';
-import { BannerManageComponent } from './banners/banner-manage/banner-manage.component';
-import { BannerTableComponent } from './banners/banner-table/banner-table.component';
-import { BlogManageComponent } from './blogs/blog-manage/blog-manage.component';
-import { BlogTableComponent } from './blogs/blog-table/blog-table.component';
-import { InstagramTableComponent } from './instagrams/instagram-table/instagram-table.component';
-import { InstagramManageComponent } from './instagrams/instagram-manage/instagram-manage.component';
-import { TeamMemberManageComponent } from './teammembers/team-member-manage/team-member-manage.component';
-import { TeamMemberTableComponent } from './teammembers/team-member-table/team-member-table.component';
+import {BannerManageComponent} from './banners/banner-manage/banner-manage.component';
+import {BannerTableComponent} from './banners/banner-table/banner-table.component';
+import {BlogManageComponent} from './blogs/blog-manage/blog-manage.component';
+import {BlogTableComponent} from './blogs/blog-table/blog-table.component';
+import {InstagramTableComponent} from './instagrams/instagram-table/instagram-table.component';
+import {InstagramManageComponent} from './instagrams/instagram-manage/instagram-manage.component';
+import {TeamMemberManageComponent} from './teammembers/team-member-manage/team-member-manage.component';
+import {TeamMemberTableComponent} from './teammembers/team-member-table/team-member-table.component';
+import {NotfoundComponent} from './notfound/notfound.component';
+import {UserComponent} from './user/user.component';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
+import {Routes} from '@angular/router';
+import { AuthguardGuard } from './authguard.guard';
+
+const appRoutes: Routes = [
+  {
+    path: 'users',
+    pathMatch: 'full',
+    children: [
+      {
+        path: ':name',
+        component: UserComponent
+      },
+      {
+        path: ':name/:id',
+        component: UserComponent
+      }
+    ]
+  },
+  {
+    path: 'dashboard',
+    canActivate: [AuthguardGuard],
+    component: HomeComponent
+  },
+  {
+    path: '',
+    redirectTo: 'users/mehulmpt/1',
+    pathMatch: 'prefix'
+  },
+  {
+    path: '**',
+    component: NotfoundComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -52,6 +89,10 @@ import { TeamMemberTableComponent } from './teammembers/team-member-table/team-m
     InstagramManageComponent,
     TeamMemberManageComponent,
     TeamMemberTableComponent,
+    NotfoundComponent,
+    UserComponent,
+    HeaderComponent,
+    FooterComponent,
 
   ],
   imports: [
@@ -63,7 +104,6 @@ import { TeamMemberTableComponent } from './teammembers/team-member-table/team-m
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]

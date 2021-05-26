@@ -17,7 +17,7 @@ export class AppComponent {
   dateObj = new Date();
   isLoggedIn = false;
 
-  constructor(private router: Router, public backendService: BackendService, public dialog: MatDialog) {
+  constructor(private router: Router, public dialog: MatDialog) {
 
   }
 
@@ -27,13 +27,14 @@ export class AppComponent {
   }
 
   // tslint:disable-next-line:typedef
-  logOut() {
-    const answer = window.confirm('Are You Sure?');
-    if (answer) {
-      this.backendService.isLoggedIn = false;
-      this.router.navigateByUrl('/');
-    }
-  }
+  // logOut() {
+  //   const answer = window.confirm('Are You Sure?');
+  //   if (answer) {
+  //     // @ts-ignore
+  //     this.backendService.getUserLoggedIn() = false;
+  //     this.router.navigateByUrl('/');
+  //   }
+  // }
 
 
   // tslint:disable-next-line:typedef
