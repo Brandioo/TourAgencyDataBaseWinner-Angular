@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import {UserService} from '../user.service';
+import {Component, OnInit, Input} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {Router} from '@angular/router';
+import {BackendService} from '../service/backend.service';
 
 @Component({
   selector: 'app-login',
@@ -9,30 +10,21 @@ import {UserService} from '../user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private user: UserService) {
+  user = 'Brand';
+  password = 'Ok';
+  dateObj = new Date();
+
+  constructor(private router: Router, private backendService: BackendService) {
+  }
+
+  ngOnInit(): void {
   }
 
   // tslint:disable-next-line:typedef
-  ngOnInit() {
-    console.log('hit');
+  onAddForm(formValue: NgForm) {
+    this.user = formValue.value.username;
+    this.backendService.isLoggedIn = true;
+    this.password = formValue.value.password;
+    this.router.navigateByUrl('home');
   }
-
-
-  // @ts-ignore
-  // tslint:disable-next-line:typedef
-  loginUser(e) {
-    e.preventDefault();
-    console.log(e);
-    const username = e.target.elements[0].value;
-    const password = e.target.elements[1].value;
-
-    // tslint:disable-next-line:triple-equals
-    if (username == 'admin' && password == 'admin') {
-      this.user.setUserLoggedIn();
-      this.router.navigate(['home']);
-    }
-  }
-
-
-
 }

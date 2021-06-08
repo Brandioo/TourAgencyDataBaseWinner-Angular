@@ -1,13 +1,72 @@
-<form (submit)="loginUser($event)">
-  <div class="input">
-    <label>Username</label>
-    <input type="text">
-  </div>
-  <div class="input">
-    <label>Password</label>
-    <input type="password">
-  </div>
-  <div class="input">
-    <input type="submit" value="Login">
-  </div>
-</form>
+<!--<p>Login Option Only By GONLINE</p>-->
+
+
+
+<!--<div class="border">-->
+<!--  <img align="center" src="https://cdn.dribbble.com/users/2095589/screenshots/4166422/user_1.png?compress=1&resize=400x300" class="avatar" width="200" height="130">-->
+<!--  <form method="get" align="center" #f="ngForm" (ngSubmit)="onAddForm(f)">-->
+<!--    <input type="text" ngModel name="username" placeholder="UserName" required>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <input type="password" ngModel name="password" placeholder="Password" required>-->
+<!--    <br>-->
+<!--    <button type="submit">Add</button>-->
+
+
+<!--  </form>-->
+<!--</div>-->
+
+
+<!-- Chunck 5: Login & Password (JavaScript) -->
+<label>Your Login
+  <input type="login" id="login" size="10"/>
+</label>
+<br/><br/>
+
+<label>Your Password
+  <input type="password" id="password" size="10"/>
+</label>
+<br/><br/>
+
+<button onclick="chkPassword()">Log in</button>
+<p id="button"></p>
+
+<a href="priroda-most-les.jpg">
+  <p><button onclick="a" type="button" id="site" value="a" disabled="disabled">Enter Site</button></p>
+</a>
+
+<script>
+  function chkPassword()
+  {
+
+    var w=document.getElementById('login')
+    var y=document.getElementById('password');
+    var x;
+    var passwd = "123";
+
+    if (w.value!="" && y.value!="")
+    {
+
+      var r=confirm("You have entered a password!");
+
+      if (r==true)
+      {
+
+        if (passwd == y.value)  {
+          x="Your Password is Correct Now You Can Enter the Site!";
+          document.getElementById("button").innerHTML=x;
+          document.getElementById("site").disabled=false;
+          return true;
+        }
+        else if (passwd != y.value) {
+          x="Your Password is not Correct";
+          document.getElementById("button").innerHTML=x;
+          return false;
+        }
+      }
+
+    }else { x="Your Login is missing"; document.getElementById("button").innerHTML=x; return false;}
+
+  }
+</script>
+

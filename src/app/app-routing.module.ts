@@ -21,7 +21,7 @@ import {TeamMemberTableComponent} from './teammembers/team-member-table/team-mem
 import {TeamMemberManageComponent} from './teammembers/team-member-manage/team-member-manage.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/destinations', pathMatch: 'full'},
+  {path: '', redirectTo: '/', pathMatch: 'full'},
   {path: 'destinations', component: DestinationTableComponent},
   {path: 'destinations/manage', component: DestinationManageComponent},
   {path: 'destinations/manage/:id', component: DestinationManageComponent},
