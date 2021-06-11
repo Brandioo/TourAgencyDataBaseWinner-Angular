@@ -1,7 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
-import {BackendService} from '../service/backend.service';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -10,21 +9,41 @@ import {BackendService} from '../service/backend.service';
 })
 export class LoginComponent implements OnInit {
 
-  user = 'Brand';
-  password = 'Ok';
-  dateObj = new Date();
+  form: any = {};
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
 
-  constructor(private router: Router, private backendService: BackendService) {
-  }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+    }
   }
 
-  // tslint:disable-next-line:typedef
-  onAddForm(formValue: NgForm) {
-    this.user = formValue.value.username;
-    this.backendService.isLoggedIn = true;
-    this.password = formValue.value.password;
-    this.router.navigateByUrl('home');
+  onSubmit(): void {
+    this.authService.login(this.form).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+        this.reloadPage();
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    );
   }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+
 }

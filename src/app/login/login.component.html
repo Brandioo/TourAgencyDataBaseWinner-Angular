@@ -1,72 +1,75 @@
-<!--<p>Login Option Only By GONLINE</p>-->
+<div class="col-md-12">
+  <div class="card card-container">
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+    />
+    <form
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          #username="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && username.invalid"
+        >
+          Username is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && password.invalid"
+        >
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">
+          Login
+        </button>
+      </div>
+      <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && isLoginFailed"
+        >
+          Login failed: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
 
-
-
-<!--<div class="border">-->
-<!--  <img align="center" src="https://cdn.dribbble.com/users/2095589/screenshots/4166422/user_1.png?compress=1&resize=400x300" class="avatar" width="200" height="130">-->
-<!--  <form method="get" align="center" #f="ngForm" (ngSubmit)="onAddForm(f)">-->
-<!--    <input type="text" ngModel name="username" placeholder="UserName" required>-->
-<!--    <br>-->
-<!--    <br>-->
-<!--    <input type="password" ngModel name="password" placeholder="Password" required>-->
-<!--    <br>-->
-<!--    <button type="submit">Add</button>-->
-
-
-<!--  </form>-->
-<!--</div>-->
-
-
-<!-- Chunck 5: Login & Password (JavaScript) -->
-<label>Your Login
-  <input type="login" id="login" size="10"/>
-</label>
-<br/><br/>
-
-<label>Your Password
-  <input type="password" id="password" size="10"/>
-</label>
-<br/><br/>
-
-<button onclick="chkPassword()">Log in</button>
-<p id="button"></p>
-
-<a href="priroda-most-les.jpg">
-  <p><button onclick="a" type="button" id="site" value="a" disabled="disabled">Enter Site</button></p>
-</a>
-
-<script>
-  function chkPassword()
-  {
-
-    var w=document.getElementById('login')
-    var y=document.getElementById('password');
-    var x;
-    var passwd = "123";
-
-    if (w.value!="" && y.value!="")
-    {
-
-      var r=confirm("You have entered a password!");
-
-      if (r==true)
-      {
-
-        if (passwd == y.value)  {
-          x="Your Password is Correct Now You Can Enter the Site!";
-          document.getElementById("button").innerHTML=x;
-          document.getElementById("site").disabled=false;
-          return true;
-        }
-        else if (passwd != y.value) {
-          x="Your Password is not Correct";
-          document.getElementById("button").innerHTML=x;
-          return false;
-        }
-      }
-
-    }else { x="Your Login is missing"; document.getElementById("button").innerHTML=x; return false;}
-
-  }
-</script>
-
+    <div class="alert alert-success" *ngIf="isLoggedIn">
+      Logged in as {{ roles }}.
+    </div>
+  </div>
+</div>

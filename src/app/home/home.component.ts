@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {BackendService} from '../service/backend.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -9,17 +8,27 @@ import {BackendService} from '../service/backend.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, public backendService: BackendService ) { }
+  content: string | undefined;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getPublicContent().subscribe(
+      data => {
+        this.content = data;
+      },
+      err => {
+        this.content = JSON.parse(err.error).message;
+      }
+    );
   }
 
-  // tslint:disable-next-line:typedef
-  logOut() {
-    const answer = window.confirm('Are You Sure?');
-    if (answer) {
-      this.backendService.isLoggedIn = false;
-      this.router.navigateByUrl('/');
-    }
-  }
+  // logOut() {
+  //   const answer = window.confirm('Are You Sure?');
+  //   if (answer) {
+  //     this.backendService.isLoggedIn = false;
+  //     this.router.navigateByUrl('/');
+  //   }
+  // }
+
 }

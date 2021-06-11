@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
-import {AppComponent, DialogContentExampleDialog} from './app.component';
+import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DestinationTableComponent} from './destinations/destination-table/destination-table.component';
@@ -27,10 +27,20 @@ import {InstagramTableComponent} from './instagrams/instagram-table/instagram-ta
 import {InstagramManageComponent} from './instagrams/instagram-manage/instagram-manage.component';
 import {TeamMemberManageComponent} from './teammembers/team-member-manage/team-member-manage.component';
 import {TeamMemberTableComponent} from './teammembers/team-member-table/team-member-table.component';
+import {RegisterComponent} from './register/register.component';
+import {ProfileComponent} from './profile/profile.component';
+import {BoardAdminComponent} from './board-admin/board-admin.component';
+import {BoardModeratorComponent} from './board-moderator/board-moderator.component';
+import {BoardUserComponent} from './board-user/board-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    RegisterComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent,
     DestinationTableComponent,
     DestinationManageComponent,
     TourTableComponent,
@@ -40,7 +50,6 @@ import {TeamMemberTableComponent} from './teammembers/team-member-table/team-mem
     ClientsTableComponent,
     HomeComponent,
     LoginComponent,
-    DialogContentExampleDialog,
     ClientManageComponent,
     AboutUsComponent,
     ShopOnlineComponent,
