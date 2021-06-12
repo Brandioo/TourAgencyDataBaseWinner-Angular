@@ -3,7 +3,6 @@ import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {BackendService} from './service/backend.service';
 import {MatDialog} from '@angular/material/dialog';
-import {TokenStorageService} from './_services/token-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -14,34 +13,49 @@ export class AppComponent implements OnInit {
 
   title = 'Simplicity Is Here';
   // myName = 'SDA';
-  // myName = 'SDA';
-  private roles!: string[];
+  user = '';
+  password = '';
+  dateObj = new Date();
   isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
-  username!: string;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private router: Router, public backendService: BackendService, public dialog: MatDialog) {
+
+  }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    this.isLoggedIn = Boolean(localStorage.getItem('isLoggedIn'));
+  }
 
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
-
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
-      this.username = user.username;
+  // tslint:disable-next-line:typedef
+  logOut() {
+    const answer = window.confirm('Are You Sure?');
+    if (answer) {
+      this.backendService.isLoggedIn = false;
+      this.router.navigateByUrl('/');
     }
   }
 
-  logout(): void {
-    this.tokenStorageService.signOut();
-    window.location.reload();
+
+  // tslint:disable-next-line:typedef
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogContentExampleDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
+
+
 }
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'dialog-content-example-dialog.html',
+})
+// tslint:disable-next-line:component-class-suffix
+export class DialogContentExampleDialog {}
+
 
 
 
