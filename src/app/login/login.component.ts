@@ -13,9 +13,9 @@ export class LoginComponent implements OnInit {
     alert('test');
   }
 
-  user = 'Brand';
-  password = 'Ok';
-  dateObj = new Date();
+  // user = 'Brand';
+  // password = 'Ok';
+  // dateObj = new Date();
   authUser = {
     username: 'bcitozi19@epoka.edu.al',
     password: 'Admin@123'
@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
   formElement = document.getElementById('loginForm');
   emailInputElement = document.getElementById('loginFormEmailInput');
   passwordInputElement = document.getElementById('loginFormPasswordInput');
-  emailInputElementValue = (document.getElementById('loginFormEmailInput') as HTMLInputElement).value;
-  passwordInputElementValue = (document.getElementById('loginFormPasswordInput') as HTMLInputElement).value;
+  emailInputElementValue = '';
+  passwordInputElementValue = '';
 
   ngOnInit(): void {
   }
@@ -60,13 +60,15 @@ export class LoginComponent implements OnInit {
   }
 
   emailChecker = (event: any) => {
+    this.emailInputElementValue = (document.getElementById('loginFormEmailInput') as HTMLInputElement).value;
+
     if (this.emailInputElement && this.emailInputElementValue) { // required
       if (typeof this.emailInputElementValue === 'string') {
         if (this.emailInputElementValue.match(this.DEFAULT_EMAIL_REGEXP)) { // patter
           if (this.emailInputElementValue === this.authUser.username) {
             return true;
           } else {
-            this.preventAndNotify(event, 'Wrong username');
+            return this.preventAndNotify(event, 'Wrong username');
           }
         } else {
           this.preventAndNotify(event, 'Username must be an epoka email, example@epoka.edu.al');
@@ -80,15 +82,17 @@ export class LoginComponent implements OnInit {
       this.required(this.emailInputElement);
     }
   }
+
   // tslint:disable-next-line:typedef
   passwordChecker(event: any) {
+    this.passwordInputElementValue = (document.getElementById('loginFormPasswordInput') as HTMLInputElement).value;
     if (this.passwordInputElement && this.passwordInputElementValue) { // required
       if (this.passwordInputElementValue.length >= 8) { // minlength
         if (this.passwordInputElementValue.match(this.DEFAULT_PASSWORD_REGEXP)) { // pattern
           if (this.passwordInputElementValue === this.authUser.password) {
             return true;
           } else {
-            this.preventAndNotify(event, 'Wrong password');
+            return this.preventAndNotify(event, 'Wrong password');
           }
         } else {
           this.preventAndNotify(event, 'Password is weak');
@@ -120,12 +124,12 @@ export class LoginComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  onAddForm(formValue: NgForm) {
-    this.user = formValue.value.username;
-    this.backendService.isLoggedIn = true;
-    this.password = formValue.value.password;
-    this.main();
-    this.router.navigateByUrl('home');
-  }
+  // onAddForm(formValue: NgForm) {
+  //   this.user = formValue.value.username;
+  //   this.backendService.isLoggedIn = true;
+  //   this.password = formValue.value.password;
+  //   this.main();
+  //   this.router.navigateByUrl('home');
+  // }
 
 }
