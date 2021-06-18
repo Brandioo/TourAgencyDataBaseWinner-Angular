@@ -19,18 +19,19 @@ export class AppComponent implements OnInit {
   isLoggedIn = false;
 
   constructor(private router: Router, public backendService: BackendService, public dialog: MatDialog) {
-
+    this.isLoggedIn = Boolean(localStorage.getItem('isLoggedIn'));
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = Boolean(localStorage.getItem('isLoggedIn'));
+  
+    console.log(this.isLoggedIn,'dawdawdawd')
   }
 
   // tslint:disable-next-line:typedef
   logOut() {
     const answer = window.confirm('Are You Sure?');
     if (answer) {
-      this.backendService.isLoggedIn = false;
+      localStorage.setItem('isLoggedIn','false')
       this.router.navigateByUrl('/');
     }
   }

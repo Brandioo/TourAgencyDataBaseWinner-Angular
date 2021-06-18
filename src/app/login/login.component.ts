@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {BackendService} from '../service/backend.service';
 
@@ -9,7 +9,12 @@ import {BackendService} from '../service/backend.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router, private backendService: BackendService) {
+  loginForm!: FormGroup;
+  
+  constructor(private router: Router,
+     private backendService: BackendService,
+     private formBuilder:FormBuilder) {
+ 
     alert('test');
   }
 
@@ -22,28 +27,30 @@ export class LoginComponent implements OnInit {
   };
   DEFAULT_EMAIL_REGEXP = /[a-zA-Z0-9\.\_\-]+@epoka\.edu\.al/g; // .../gi case insesivity
   DEFAULT_PASSWORD_REGEXP = /[a-zA-Z0-9\.\_\-\!\?]+/g;
-  formElement = document.getElementById('loginForm');
-  emailInputElement = document.getElementById('loginFormEmailInput');
-  passwordInputElement = document.getElementById('loginFormPasswordInput');
+
   emailInputElementValue = '';
   passwordInputElementValue = '';
 
   ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+  });
   }
 
   preventAndNotify = (event: any, message: any) => {
-    event.preventDefault();
-    event.stopPropagation();
+    //event.preventDefault();
+    // event.stopPropagation();
 
     alert(message);
   }
 
   // tslint:disable-next-line:typedef
-  required(input: any) {
-    if (input && input instanceof HTMLInputElement) {
-      input.required = true;
-    }
-  }
+  // required(input: any) {
+  //   if (input && input instanceof HTMLInputElement) {
+  //     input.required = true;
+  //   }
+  // }
 
   // tslint:disable-next-line:typedef
   pattern(input: any, pattern: any) {
@@ -59,9 +66,10 @@ export class LoginComponent implements OnInit {
   }
 
   emailChecker = (event: any) => {
-    this.emailInputElementValue = (document.getElementById('loginFormEmailInput') as HTMLInputElement).value;
 
-    if (this.emailInputElement && this.emailInputElementValue) { // required
+    this.emailInputElementValue = event;
+
+    if (this.emailInputElementValue) { // required
       if (typeof this.emailInputElementValue === 'string') {
         if (this.emailInputElementValue.match(this.DEFAULT_EMAIL_REGEXP)) { // patter
           if (this.emailInputElementValue === this.authUser.username) {
@@ -71,19 +79,19 @@ export class LoginComponent implements OnInit {
           }
         } else {
           this.preventAndNotify(event, 'Username must be an epoka email, example@epoka.edu.al');
-          this.pattern(this.emailInputElement, this.DEFAULT_EMAIL_REGEXP);
+          this.pattern(this.emailInputElementValue, this.DEFAULT_EMAIL_REGEXP);
         }
       } else {
         this.preventAndNotify(event, 'Username must be a string');
       }
     } else {
       this.preventAndNotify(event, 'Username is required');
-      this.required(this.emailInputElement);
+      // this.required(this.emailInputElementValue);
     }
   }
   passwordChecker(event: any) {
-    this.passwordInputElementValue = (document.getElementById('loginFormPasswordInput') as HTMLInputElement).value;
-    if (this.passwordInputElement && this.passwordInputElementValue) { // required
+    this.passwordInputElementValue = event;
+    if (this.passwordInputElementValue) { // required
       if (this.passwordInputElementValue.length >= 8) { // minlength
         if (this.passwordInputElementValue.match(this.DEFAULT_PASSWORD_REGEXP)) { // pattern
           if (this.passwordInputElementValue === this.authUser.password) {
@@ -93,15 +101,15 @@ export class LoginComponent implements OnInit {
           }
         } else {
           this.preventAndNotify(event, 'Password is weak');
-          this.pattern(this.passwordInputElement, this.DEFAULT_PASSWORD_REGEXP);
+          this.pattern(this.passwordInputElementValue, this.DEFAULT_PASSWORD_REGEXP);
         }
       } else {
         this.preventAndNotify(event, 'Password must be 8 characters or logger');
-        this.minlength(this.passwordInputElement);
+        this.minlength(this.passwordInputElementValue);
       }
     } else {
       this.preventAndNotify(event, 'Password is required');
-      this.required(this.passwordInputElement);
+      // this.required(this.passwordInputElement);
     }
   }
 
@@ -109,23 +117,18 @@ export class LoginComponent implements OnInit {
     if (this.emailChecker(user) && this.passwordChecker(password)) {
       // TODO is up to you
       this.router.navigateByUrl('home');
-      // this.backendService.isLoggedIn = true;
+      this.backendService.isLoggedIn = true;
+      localStorage.setItem('isLoggedIn','true')
     } else {
       this.preventAndNotify(event, 'Form not valid');
     }
   }
-  // main() {
-  //   if (this.formElement instanceof HTMLFormElement) {
-  //     this.formElement.addEventListener('submit', this.formChecker);
-  //   }
-  // }
-  onAddForm(formValue: NgForm) {
-    debugger
-    this.user = formValue.value.username;
-    this.password = formValue.value.password;
-    // this.backendService.isLoggedIn = true;
+
+  onAddForm() {
+    this.user = this.loginForm.controls.username.value;
+    this.password = this.loginForm.controls.password.value;
     this.formChecker(this.user, this.password);
-    // this.main();
+
   }
 
 }

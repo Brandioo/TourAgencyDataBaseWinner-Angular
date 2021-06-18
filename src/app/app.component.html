@@ -24,11 +24,11 @@
 
 
 
-<nav *ngIf="backendService.isLoggedIn">
+<!-- <nav *ngIf="backendService.isLoggedIn">
 
 
   <div class="container">
-    <ul class="nav navbar-nav" routerLinkActive="active">
+    <ul class="nav navbar-nav" routerLinkActive="active"> -->
       <!--      &lt;!&ndash;      <li class="nav-item"><a class="nav-link" routerLink="home">| Home |</a></li>&ndash;&gt;-->
       <!--      &lt;!&ndash;      <li class="nav-item"><a class="nav-link" routerLink="user">| User Profile |</a></li>&ndash;&gt;-->
       <!--      &lt;!&ndash;      <li class="nav-item"><a class="nav-link" routerLink="listitem">| List Item |</a></li>&ndash;&gt;-->
@@ -40,51 +40,12 @@
       <!--      &lt;!&ndash;        <br>&ndash;&gt;-->
       <!--      &lt;!&ndash;-->
       <!--      &lt;!&ndash;      </li>&ndash;&gt;-->
-
+<!-- 
       <li class="nav-item"><a routerLink="about">| About Us |</a></li>
     </ul>
   </div>
-</nav>
-
-
-<div class="center"><font face="Times" size="5">{{dateObj | date:'medium'}}</font></div>
-
-<br>
-
-<app-login></app-login>
-
-<!-- Chunck 2: switch images -->
-<div align="center">
-  <br>
-  <button
-    onclick="document.getElementById('myImage').src='https://cdn.mos.cms.futurecdn.net/dzxtQ2dXH9SVKztJTbAXSA-320-80.jpg'">
-    See Venus
-  </button>
-  <br>
-  <button onclick="document.getElementById('myImage').src='assets/pluto.png'">See Pluto</button>
-  <br>
-  <button
-    onclick="document.getElementById('myImage').src='https://images.theconversation.com/files/387012/original/file-20210301-12-pyj8jo.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop'">
-    See Earth
-  </button>
-
-
-  <img id="myImage" src="assets/pluto.png" style="width:200px"/>
-
-  <button
-    onclick="document.getElementById('myImage').src='https://static.bhphotovideo.com/explora/sites/default/files/ts-space-sun-and-solar-viewing-facts-versus-fiction.jpg'">
-    See Sun
-  </button>
-  <br>
-  <button onclick="document.getElementById('myImage').src='assets/mars.png'">See Mars</button>
-  <br>
-  <button onclick="document.getElementById('myImage').src='assets/jupiter.png'">See Jupiter</button>
-
-  <br/> <br/>
-</div>
-
-
-<nav *ngIf="backendService.isLoggedIn">
+</nav> -->
+<nav *ngIf="isLoggedIn">
   <div class="page">
     <div class="container">
       <header>
@@ -98,6 +59,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="nav navbar-nav">
+                <li class="nav-item"><a class="nav-link" aria-current="page" routerLink="home">| Home|</a></li>
                 <li class="nav-item">
                   <a class="nav-link" aria-current="page"
                      routerLinkActive="active"
@@ -152,6 +114,8 @@
                      [routerLinkActiveOptions]="{exact: true}"
                      routerLink="/teamMembers">Team Members</a>
                 </li>
+                <li class="nav-item"><a class="nav-link" aria-current="page" routerLink="about">| About Us |</a></li>
+                <li class="nav-item"><a class="nav-link" aria-current="page" style="color: red;cursor: pointer;" (click)=logOut()>| Log Out |</a></li>
               </ul>
             </div>
           </div>
@@ -163,6 +127,45 @@
     </div>
   </div>
 </nav>
+
+<div class="center"><font face="Times" size="5">{{dateObj | date:'medium'}}</font></div>
+
+<br>
+
+<app-login [hidden] = "isLoggedIn"></app-login>
+
+<!-- Chunck 2: switch images -->
+<div align="center">
+  <br>
+  <button
+    onclick="document.getElementById('myImage').src='https://cdn.mos.cms.futurecdn.net/dzxtQ2dXH9SVKztJTbAXSA-320-80.jpg'">
+    See Venus
+  </button>
+  <br>
+  <button onclick="document.getElementById('myImage').src='assets/pluto.png'">See Pluto</button>
+  <br>
+  <button
+    onclick="document.getElementById('myImage').src='https://images.theconversation.com/files/387012/original/file-20210301-12-pyj8jo.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop'">
+    See Earth
+  </button>
+
+
+  <img id="myImage" src="assets/pluto.png" style="width:200px"/>
+
+  <button
+    onclick="document.getElementById('myImage').src='https://static.bhphotovideo.com/explora/sites/default/files/ts-space-sun-and-solar-viewing-facts-versus-fiction.jpg'">
+    See Sun
+  </button>
+  <br>
+  <button onclick="document.getElementById('myImage').src='assets/mars.png'">See Mars</button>
+  <br>
+  <button onclick="document.getElementById('myImage').src='assets/jupiter.png'">See Jupiter</button>
+
+  <br/> <br/>
+</div>
+
+
+
 
 
 <style>
