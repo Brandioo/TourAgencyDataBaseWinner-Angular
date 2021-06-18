@@ -13,9 +13,9 @@ export class LoginComponent implements OnInit {
     alert('test');
   }
 
-  // user = 'Brand';
-  // password = 'Ok';
-  // dateObj = new Date();
+  user = '';
+  password = '';
+  dateObj = new Date();
   authUser = {
     username: 'bcitozi19@epoka.edu.al',
     password: 'Admin@123'
@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  // tslint:disable-next-line:typedef
   minlength(input: any, length = 8) {
     if (input && input instanceof HTMLInputElement) {
       input.minLength = length;
@@ -82,8 +81,6 @@ export class LoginComponent implements OnInit {
       this.required(this.emailInputElement);
     }
   }
-
-  // tslint:disable-next-line:typedef
   passwordChecker(event: any) {
     this.passwordInputElementValue = (document.getElementById('loginFormPasswordInput') as HTMLInputElement).value;
     if (this.passwordInputElement && this.passwordInputElementValue) { // required
@@ -108,28 +105,27 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  formChecker = (event: any) => {
-    if (this.emailChecker(event) && this.passwordChecker(event)) {
+  formChecker = (user: any, password: any) => {
+    if (this.emailChecker(user) && this.passwordChecker(password)) {
       // TODO is up to you
+      this.router.navigateByUrl('home');
+      // this.backendService.isLoggedIn = true;
     } else {
       this.preventAndNotify(event, 'Form not valid');
     }
   }
-
-  // tslint:disable-next-line:typedef
-  main() {
-    if (this.formElement instanceof HTMLFormElement) {
-      this.formElement.addEventListener('submit', this.formChecker);
-    }
-  }
-
-  // tslint:disable-next-line:typedef
-  // onAddForm(formValue: NgForm) {
-  //   this.user = formValue.value.username;
-  //   this.backendService.isLoggedIn = true;
-  //   this.password = formValue.value.password;
-  //   this.main();
-  //   this.router.navigateByUrl('home');
+  // main() {
+  //   if (this.formElement instanceof HTMLFormElement) {
+  //     this.formElement.addEventListener('submit', this.formChecker);
+  //   }
   // }
+  onAddForm(formValue: NgForm) {
+    debugger
+    this.user = formValue.value.username;
+    this.password = formValue.value.password;
+    // this.backendService.isLoggedIn = true;
+    this.formChecker(this.user, this.password);
+    // this.main();
+  }
 
 }
