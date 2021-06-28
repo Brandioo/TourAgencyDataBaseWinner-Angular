@@ -16,7 +16,7 @@
 </div>
 
 
-<p id="demo" onclick="myFunction()">Click me to change my HTML content.</p>
+<div class="center"><font face="Times" size="5">{{dateObj | date:'medium'}}</font></div>
 
 <script>
   function myFunction(){document.getElementById("demo").style="color:red; font-size: 20px";}
@@ -45,7 +45,7 @@
     </ul>
   </div>
 </nav> -->
-<nav *ngIf="isLoggedIn">
+<nav *ngIf = "isLoggedIn">
   <div class="page">
     <div class="container">
       <header>
@@ -121,19 +121,17 @@
           </div>
         </nav>
       </header>
-      <div class="main">
-        <router-outlet></router-outlet>
-      </div>
+     
     </div>
   </div>
 </nav>
 
-<div class="center"><font face="Times" size="5">{{dateObj | date:'medium'}}</font></div>
+<div class="main container">
+  <router-outlet></router-outlet>
+</div>
+
 
 <br>
-
-<app-login [hidden] = "isLoggedIn"></app-login>
-
 <!-- Chunck 2: switch images -->
 <div align="center">
   <br>

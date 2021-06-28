@@ -19,9 +19,13 @@ import {InstagramTableComponent} from './instagrams/instagram-table/instagram-ta
 import {InstagramManageComponent} from './instagrams/instagram-manage/instagram-manage.component';
 import {TeamMemberTableComponent} from './teammembers/team-member-table/team-member-table.component';
 import {TeamMemberManageComponent} from './teammembers/team-member-manage/team-member-manage.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent},
+  {path: 'login',component: LoginComponent},
+  {path: 'about', component: AboutUsComponent},
+  {path: 'shop', component: ShopOnlineComponent},
   {path: 'destinations', component: DestinationTableComponent},
   {path: 'destinations/manage', component: DestinationManageComponent},
   {path: 'destinations/manage/:id', component: DestinationManageComponent},
@@ -46,9 +50,7 @@ const routes: Routes = [
   {path: 'teamMembers', component: TeamMemberTableComponent},
   {path: 'teamMembers/manage', component: TeamMemberManageComponent},
   {path: 'teamMembers/manage/:id', component: TeamMemberManageComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'about', component: AboutUsComponent},
-  {path: 'shop', component: ShopOnlineComponent},
+  {path: '**', redirectTo: 'home', pathMatch: 'full'},
 ];
 
 

@@ -1,6 +1,5 @@
-<p>Login Option Only By GONLINE</p>
 
-
+<div class="card-body" style="background-color: white;">
 <div class="border">
   <div class="container">
   <img align="center"
@@ -28,12 +27,13 @@
     <br>
     <br>
     <div class="column btn-container">
-      <button [disabled] = "loginForm.invalid">Add</button>
-      <input type="reset" value="Reset">
+      <button [ngStyle] = "loginForm.invalid?{'opacity': '0.5','cursor':'not-allowed'}:{'opacity': '1'}" [disabled] = "loginForm.invalid">Add</button>
+      <input style="margin-left: 5px;" type="reset" value="Reset">
     </div>
 
 
   </form>
+</div>
 </div>
 </div>
 

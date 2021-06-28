@@ -116,11 +116,12 @@ export class LoginComponent implements OnInit {
   formChecker = (user: any, password: any) => {
     if (this.emailChecker(user) && this.passwordChecker(password)) {
       // TODO is up to you
-      this.router.navigateByUrl('home');
-      this.backendService.isLoggedIn = true;
-      localStorage.setItem('isLoggedIn','true')
+      (localStorage.setItem('isLoggedIn',JSON.stringify(user)))
+      this.router.navigate(['home']);
+      this.backendService.isLoggedIn.next(user);
+      //  localStorage.setItem('isLoggedIn','false')
     } else {
-      this.preventAndNotify(event, 'Form not valid');
+      // this.preventAndNotify(event, 'Form not valid');
     }
   }
 

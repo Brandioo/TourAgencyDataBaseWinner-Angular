@@ -27,6 +27,7 @@ import {InstagramTableComponent} from './instagrams/instagram-table/instagram-ta
 import {InstagramManageComponent} from './instagrams/instagram-manage/instagram-manage.component';
 import {TeamMemberManageComponent} from './teammembers/team-member-manage/team-member-manage.component';
 import {TeamMemberTableComponent} from './teammembers/team-member-table/team-member-table.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [

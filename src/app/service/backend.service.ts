@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
-  isLoggedIn = false;
-
+  isLoggedIn: BehaviorSubject<any>;
+  currentUser: Observable<any>;
   toDoUsers = [
     'Brand',
     'Xhoi'
@@ -15,6 +15,8 @@ export class BackendService {
   private serverUrl = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) {
+    this.isLoggedIn = new BehaviorSubject<any>(localStorage.getItem('isLoggedIn'))
+    this.currentUser = this.isLoggedIn.asObservable();
   }
 
   getUsers(): Observable<any> {

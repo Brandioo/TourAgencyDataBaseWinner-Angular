@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {BackendService} from './service/backend.service';
 import {MatDialog} from '@angular/material/dialog';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -16,23 +17,30 @@ export class AppComponent implements OnInit {
   user = '';
   password = '';
   dateObj = new Date();
-  isLoggedIn = false;
-
+  isLoggedIn: any;
+  logout :any
   constructor(private router: Router, public backendService: BackendService, public dialog: MatDialog) {
-    this.isLoggedIn = Boolean(localStorage.getItem('isLoggedIn'));
+    
+    this.backendService.currentUser.subscribe(
+      data => {
+        this.isLoggedIn = data
+        console.log(data)
+      }
+    )
+     
+    
   }
 
   ngOnInit(): void {
   
-    console.log(this.isLoggedIn,'dawdawdawd')
   }
-
   // tslint:disable-next-line:typedef
   logOut() {
     const answer = window.confirm('Are You Sure?');
     if (answer) {
-      localStorage.setItem('isLoggedIn','false')
-      this.router.navigateByUrl('/');
+      localStorage.removeItem('isLoggedIn');
+      this.backendService.isLoggedIn.next(null)
+      this.router.navigate(['/login']);
     }
   }
 

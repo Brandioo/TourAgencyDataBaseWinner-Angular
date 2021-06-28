@@ -16,11 +16,11 @@ export class AboutUsComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   logOut() {
-    const answer = window.confirm('Are You Sure?');
-    if (answer) {
-      this.backendService.isLoggedIn = false;
-      this.router.navigateByUrl('/');
-    }
+  //   const answer = window.confirm('Are You Sure?');
+  //   if (answer) {
+  //     this.backendService.isLoggedIn = false;
+  // //     this.router.navigateByUrl('/');
+  // // //   }
   }
 
 }
