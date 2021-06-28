@@ -19,6 +19,9 @@ export class BackendService {
     this.currentUser = this.isLoggedIn.asObservable();
   }
 
+  public get currentUserValue(): any {
+    return this.isLoggedIn.value;
+}
   getUsers(): Observable<any> {
     return this.http.get<any>(this.serverUrl + 'todoitems');
   }
