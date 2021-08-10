@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   // myName = 'SDA';
   user = '';
   password = '';
+  // @ts-ignore
   dateObj = new Date();
   isLoggedIn: any;
   logout: any;
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
     this.backendService.currentUser.subscribe(
       data => {
         this.isLoggedIn = data;
+        // @ts-ignore
         console.log(data);
       }
     );
@@ -36,8 +38,11 @@ export class AppComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   logOut() {
-    const answer = window.confirm('Are You Sure?');
+    let answer: boolean;
+    // @ts-ignore
+    answer = window.confirm('Are You Sure?');
     if (answer) {
+      // @ts-ignore
       localStorage.removeItem('isLoggedIn');
       this.backendService.isLoggedIn.next(null);
       this.router.navigate(['/login']);
@@ -50,6 +55,7 @@ export class AppComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogContentExampleDialog);
 
     dialogRef.afterClosed().subscribe(result => {
+      // @ts-ignore
       console.log(`Dialog result: ${result}`);
     });
   }

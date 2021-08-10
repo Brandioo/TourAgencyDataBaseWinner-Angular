@@ -65,7 +65,9 @@ import {AgmCoreModule} from '@agm/core';
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AgmCoreModule
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDvlCgJfoRUYtvQXqsUVjvnxjWf2c6U_O4'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
