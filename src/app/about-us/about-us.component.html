@@ -1,21 +1,21 @@
-<div class="row">
+<div class="row" xmlns:align="http://www.w3.org/1999/xhtml">
   <div class="column">
 
-<marquee onMouseOver="javascript:stop()" onMouseOut="javascript:start()" behavior="scroll" direction="right">
-  <video width="500" height="240" controls muted style="padding: 20px" >
-    <source src="/assets/SearchEngineVideo.mp4">
-  </video>
+    <marquee onMouseOver="javascript:stop()" onMouseOut="javascript:start()" behavior="scroll" direction="right">
+      <video width="500" height="240" controls muted style="padding: 20px">
+        <source src="/assets/SearchEngineVideo.mp4">
+      </video>
 
 
-  <video width="500" height="240" controls muted style="padding: 20px">
-    <source src="/assets/gonnn.mp4">
-  </video>
+      <video width="500" height="240" controls muted style="padding: 20px">
+        <source src="/assets/gonnn.mp4">
+      </video>
 
 
-  <video width="500" height="240" controls muted style="padding: 20px">
-    <source src="/assets/Tech-Application.mp4">
-  </video>
-</marquee>
+      <video width="500" height="240" controls muted style="padding: 20px">
+        <source src="/assets/Tech-Application.mp4">
+      </video>
+    </marquee>
 
 
   </div>
@@ -113,9 +113,20 @@
   <!-- the opening tag is at the top of the page -->
 </form>
 
+<div class="circle"></div>
+<svg>
+  <filter id="wavy">
+    <feTurbulence x="0" y="0" baseFrequency="0.009" numOctaves="5" speed="2">
+      <animate attributeName="baseFrequency" dur="60s" values="0.02; 0.005; 0.02" repeatCount="indefinite"></animate>
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" scale="30"></feDisplacementMap>
+<!--      </feTurbulence>-->
+  </filter>
+</svg>
 
 <div class="topnav1" align="center">
   <font face="Times" size="5">
     <li class="nav-item"><a (click)=logOut()>| Log Out |</a></li>
   </font>
 </div>
+

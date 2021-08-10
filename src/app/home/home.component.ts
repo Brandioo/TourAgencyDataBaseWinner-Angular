@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {BackendService} from '../service/backend.service';
 
@@ -8,13 +8,24 @@ import {BackendService} from '../service/backend.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  isLoggedIn:boolean = false
-  constructor(private router: Router, public backendService: BackendService ) {
-    
-   }
+  latitude = 51.678418;
+  longitude = 7.809007;
+  locationChosen = false;
+  isLoggedIn: boolean = false;
+
+  onChoseLocation(event: any) {
+    this.latitude = event.coords.lat;
+    this.longitude = event.coords.lng;
+    this.locationChosen = true;
+  }
+
+  constructor(private router: Router, public backendService: BackendService) {
+
+  }
 
   ngOnInit(): void {
   }
+
   logOut() {
     const answer = window.confirm('Are You Sure?');
     if (answer) {
@@ -22,6 +33,7 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
+
   // tslint:disable-next-line:typedef
   // logOut() {
   //   const answer = window.confirm('Are You Sure?');

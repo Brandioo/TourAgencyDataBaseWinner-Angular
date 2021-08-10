@@ -19,9 +19,10 @@
 <div class="center"><font face="Times" size="5">{{dateObj | date:'medium'}}</font></div>
 
 <script>
-  function myFunction(){document.getElementById("demo").style="color:red; font-size: 20px";}
+  function myFunction() {
+    document.getElementById("demo").style = "color:red; font-size: 20px";
+  }
 </script>
-
 
 
 <!-- <nav *ngIf="backendService.isLoggedIn">
@@ -29,23 +30,23 @@
 
   <div class="container">
     <ul class="nav navbar-nav" routerLinkActive="active"> -->
-      <!--      &lt;!&ndash;      <li class="nav-item"><a class="nav-link" routerLink="home">| Home |</a></li>&ndash;&gt;-->
-      <!--      &lt;!&ndash;      <li class="nav-item"><a class="nav-link" routerLink="user">| User Profile |</a></li>&ndash;&gt;-->
-      <!--      &lt;!&ndash;      <li class="nav-item"><a class="nav-link" routerLink="listitem">| List Item |</a></li>&ndash;&gt;-->
-      <!--      &lt;!&ndash;      <li class="nav-item"><a class="nav-link" routerLink="todo">| About Us |</a></li>&ndash;&gt;-->
-      <!--      &lt;!&ndash;      <li class="nav-item">&ndash;&gt;-->
-      <!--      &lt;!&ndash;        <a class="logo" routerLink="about">&ndash;&gt;-->
-      <!--      &lt;!&ndash;          <embed src="/assets/dark_logo_transparent_background.png" [width]="100" [height]="70">&ndash;&gt;-->
-      <!--      &lt;!&ndash;        </a>&ndash;&gt;-->
-      <!--      &lt;!&ndash;        <br>&ndash;&gt;-->
-      <!--      &lt;!&ndash;-->
-      <!--      &lt;!&ndash;      </li>&ndash;&gt;-->
-<!-- 
+<!--      &lt;!&ndash;      <li class="nav-item"><a class="nav-link" routerLink="home">| Home |</a></li>&ndash;&gt;-->
+<!--      &lt;!&ndash;      <li class="nav-item"><a class="nav-link" routerLink="user">| User Profile |</a></li>&ndash;&gt;-->
+<!--      &lt;!&ndash;      <li class="nav-item"><a class="nav-link" routerLink="listitem">| List Item |</a></li>&ndash;&gt;-->
+<!--      &lt;!&ndash;      <li class="nav-item"><a class="nav-link" routerLink="todo">| About Us |</a></li>&ndash;&gt;-->
+<!--      &lt;!&ndash;      <li class="nav-item">&ndash;&gt;-->
+<!--      &lt;!&ndash;        <a class="logo" routerLink="about">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <embed src="/assets/dark_logo_transparent_background.png" [width]="100" [height]="70">&ndash;&gt;-->
+<!--      &lt;!&ndash;        </a>&ndash;&gt;-->
+<!--      &lt;!&ndash;        <br>&ndash;&gt;-->
+<!--      &lt;!&ndash;-->
+<!--      &lt;!&ndash;      </li>&ndash;&gt;-->
+<!--
       <li class="nav-item"><a routerLink="about">| About Us |</a></li>
     </ul>
   </div>
 </nav> -->
-<nav *ngIf = "isLoggedIn">
+<nav *ngIf="isLoggedIn">
   <div class="page">
     <div class="container">
       <header>
@@ -59,69 +60,28 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="nav navbar-nav">
-                <li class="nav-item"><a class="nav-link" aria-current="page" routerLink="home">| Home|</a></li>
+                <li class="nav-item"><a class="nav-link" aria-current="page" routerLink="home">| Home |</a></li>
+                <li class="nav-item">
                 <li class="nav-item">
                   <a class="nav-link" aria-current="page"
                      routerLinkActive="active"
                      [routerLinkActiveOptions]="{exact: true}"
-                     routerLink="/destinations">Destinations</a>
+                     routerLink="/shopOnline">Shop</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" aria-current="page"
                      routerLinkActive="active"
                      [routerLinkActiveOptions]="{exact: true}"
-                     routerLink="/banners">Banner</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page"
-                     routerLinkActive="active"
-                     [routerLinkActiveOptions]="{exact: true}"
-                     routerLink="/blogs">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page"
-                     routerLinkActive="active"
-                     [routerLinkActiveOptions]="{exact: true}"
-                     routerLink="/instagrams">Instagram</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page"
-                     routerLinkActive="active"
-                     [routerLinkActiveOptions]="{exact: true}"
-                     routerLink="/tours">Tours</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page"
-                     routerLinkActive="active"
-                     [routerLinkActiveOptions]="{exact: true}"
-                     routerLink="/clients">Clients</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page"
-                     routerLinkActive="active"
-                     [routerLinkActiveOptions]="{exact: true}"
-                     routerLink="/reservations">Reservations</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page"
-                     routerLinkActive="active"
-                     [routerLinkActiveOptions]="{exact: true}"
-                     routerLink="/shop">Shop</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page"
-                     routerLinkActive="active"
-                     [routerLinkActiveOptions]="{exact: true}"
-                     routerLink="/teamMembers">Team Members</a>
+                     routerLink="/tourBusiness">Tour Business</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" aria-current="page" routerLink="about">| About Us |</a></li>
-                <li class="nav-item"><a class="nav-link" aria-current="page" style="color: red;cursor: pointer;" (click)=logOut()>| Log Out |</a></li>
+                <li class="nav-item"><a class="nav-link" aria-current="page" style="color: red;cursor: pointer;"
+                                        (click)=logOut()>| Log Out |</a></li>
               </ul>
             </div>
           </div>
         </nav>
       </header>
-     
     </div>
   </div>
 </nav>
@@ -161,9 +121,6 @@
 
   <br/> <br/>
 </div>
-
-
-
 
 
 <style>

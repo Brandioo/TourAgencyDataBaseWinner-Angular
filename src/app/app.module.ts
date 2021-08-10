@@ -18,7 +18,7 @@ import {LoginComponent} from './login/login.component';
 import {ReservationManageComponent} from './reservations/reservation-manage/reservation-manage.component';
 import {ClientManageComponent} from './clients/client-manage/client-manage.component';
 import {AboutUsComponent} from './about-us/about-us.component';
-import {ShopOnlineComponent} from './shop/ShopOnline.component';
+import {ShopOnlineComponent} from './shop-online/shop-online.component';
 import {BannerManageComponent} from './banners/banner-manage/banner-manage.component';
 import {BannerTableComponent} from './banners/banner-table/banner-table.component';
 import {BlogManageComponent} from './blogs/blog-manage/blog-manage.component';
@@ -27,7 +27,8 @@ import {InstagramTableComponent} from './instagrams/instagram-table/instagram-ta
 import {InstagramManageComponent} from './instagrams/instagram-manage/instagram-manage.component';
 import {TeamMemberManageComponent} from './teammembers/team-member-manage/team-member-manage.component';
 import {TeamMemberTableComponent} from './teammembers/team-member-table/team-member-table.component';
-import { RouterModule } from '@angular/router';
+import {TourBusinessComponent} from './tour-business/tour-business.component';
+import {AgmCoreModule} from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { RouterModule } from '@angular/router';
     InstagramManageComponent,
     TeamMemberManageComponent,
     TeamMemberTableComponent,
+    TourBusinessComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     FormsModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

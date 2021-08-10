@@ -10,11 +10,10 @@ import {BackendService} from '../service/backend.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  
+
   constructor(private router: Router,
-     private backendService: BackendService,
-     private formBuilder:FormBuilder) {
- 
+              private backendService: BackendService,
+              private formBuilder: FormBuilder) {
     alert('test');
   }
 
@@ -35,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
-  });
+    });
   }
 
   preventAndNotify = (event: any, message: any) => {
@@ -43,7 +42,7 @@ export class LoginComponent implements OnInit {
     // event.stopPropagation();
 
     alert(message);
-  }
+  };
 
   // tslint:disable-next-line:typedef
   // required(input: any) {
@@ -88,7 +87,8 @@ export class LoginComponent implements OnInit {
       this.preventAndNotify(event, 'Username is required');
       // this.required(this.emailInputElementValue);
     }
-  }
+  };
+
   passwordChecker(event: any) {
     this.passwordInputElementValue = event;
     if (this.passwordInputElementValue) { // required
@@ -116,14 +116,14 @@ export class LoginComponent implements OnInit {
   formChecker = (user: any, password: any) => {
     if (this.emailChecker(user) && this.passwordChecker(password)) {
       // TODO is up to you
-      (localStorage.setItem('isLoggedIn',JSON.stringify(user)))
+      (localStorage.setItem('isLoggedIn', JSON.stringify(user)));
       this.router.navigate(['home']);
       this.backendService.isLoggedIn.next(user);
       //  localStorage.setItem('isLoggedIn','false')
     } else {
       // this.preventAndNotify(event, 'Form not valid');
     }
-  }
+  };
 
   onAddForm() {
     this.user = this.loginForm.controls.username.value;

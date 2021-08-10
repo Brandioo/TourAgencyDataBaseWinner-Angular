@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {NgForm} from '@angular/forms';
 import {BackendService} from './service/backend.service';
 import {MatDialog} from '@angular/material/dialog';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -18,28 +16,30 @@ export class AppComponent implements OnInit {
   password = '';
   dateObj = new Date();
   isLoggedIn: any;
-  logout :any
+  logout: any;
+
   constructor(private router: Router, public backendService: BackendService, public dialog: MatDialog) {
-    
+
     this.backendService.currentUser.subscribe(
       data => {
-        this.isLoggedIn = data
-        console.log(data)
+        this.isLoggedIn = data;
+        console.log(data);
       }
-    )
-     
-    
+    );
+
+
   }
 
   ngOnInit(): void {
-  
+
   }
+
   // tslint:disable-next-line:typedef
   logOut() {
     const answer = window.confirm('Are You Sure?');
     if (answer) {
       localStorage.removeItem('isLoggedIn');
-      this.backendService.isLoggedIn.next(null)
+      this.backendService.isLoggedIn.next(null);
       this.router.navigate(['/login']);
     }
   }
@@ -63,7 +63,8 @@ export class AppComponent implements OnInit {
   templateUrl: 'dialog-content-example-dialog.html',
 })
 // tslint:disable-next-line:component-class-suffix
-export class DialogContentExampleDialog {}
+export class DialogContentExampleDialog {
+}
 
 
 
