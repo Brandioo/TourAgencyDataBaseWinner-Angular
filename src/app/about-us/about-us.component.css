@@ -1,3 +1,68 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body{
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+.product-card{
+  background-color: #ffffff;
+  width: 350px;
+  position: relative;
+  height: 280px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.product-card img{
+  height: 180px;
+  width: 100%;
+}
+.product-name{
+  padding: 0 10px;
+}
+.product-name h1{
+  margin: 5px 0;
+  font-size: 20px;
+}
+
+.product-name p{
+  color: #333232;
+}
+
+.product-name .price{
+  color: #152553;
+  margin: 5px 0;
+  font-weight: 500;
+}
+
+.product-name .price span{
+  color: #000000;
+  text-decoration: line-through;
+  margin: 0 10px;
+}
+
+.sale-logo{
+  background-color: #152553;
+  color: #ffffff;
+  height: 20px;
+  width: 60px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  position: absolute;
+  top: 10px;
+  border-radius: 2px;
+  right: 10px;
+  text-align: center;
+}
+
+
 p, .center{
   text-align: center;
 }
@@ -11,4 +76,93 @@ p, .center{
   background-repeat: no-repeat;
   background-size: cover;
   color: whitesmoke;
+}
+
+img{
+  vertical-align: middle;
+}
+#plans{
+  margin-top: 100px;
+}
+.main_price .card{
+  position: relative;
+  max-width: 400px;
+  height: auto;
+  background: #fff;
+  border-radius: 15px;
+  margin: 50px auto;
+  padding: 40px 20px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+  border: 2px solid #100e34;
+}
+.main_price .card:hover{
+  box-shadow: 0 25px 55px rgba(0, 0, 0, .2),
+  0 16px 28px rgba(0, 0, 0, .2);
+}
+.title h3{
+  position: relative;
+  margin: 20px 0 0;
+  padding: 0;
+  color: #100e34;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  z-index: 2;
+  font-weight: 900;
+}
+.title h3 span{
+  font-size: 15px;
+  color: black;
+}
+.title img{
+  animation: spin 5s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+.price, .option{
+  position: relative;
+  z-index: 2;
+}
+.price h4{
+  margin: 0;
+  padding: 10px 0;
+  color: #100e34;
+  font-size: 30px;
+}
+.option ul{
+  margin: 0;
+  padding: 0;
+}
+option ul li{
+  margin: 20px 10px 10px;
+  padding: 0;
+  list-style: none;
+  color: #7f8896;
+  font-size: 14px;
+}
+.option ul li span{
+  font-size: 16px;
+}
+
+.main_price .card a{
+  position: relative;
+  z-index: 2;
+  background: #0EAD69;
+  color: white;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 40px;
+  display: block;
+  text-align: center;
+  margin: 20px auto 0;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.2);
+}
+.main_price .card a:hover{
+  text-decoration: none;
+  background: white;
+  color: #Fa5019;
 }

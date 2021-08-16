@@ -29,6 +29,7 @@ import {TeamMemberManageComponent} from './teammembers/team-member-manage/team-m
 import {TeamMemberTableComponent} from './teammembers/team-member-table/team-member-table.component';
 import {TourBusinessComponent} from './tour-business/tour-business.component';
 import {AgmCoreModule} from '@agm/core';
+import { RestaurantBusinessComponent } from './restaurant-business/restaurant-business.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {AgmCoreModule} from '@agm/core';
     TeamMemberManageComponent,
     TeamMemberTableComponent,
     TourBusinessComponent,
+    RestaurantBusinessComponent,
   ],
   imports: [
     BrowserModule,

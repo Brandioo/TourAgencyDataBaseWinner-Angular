@@ -22,12 +22,14 @@ import {TeamMemberManageComponent} from './teammembers/team-member-manage/team-m
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth.guard';
 import {TourBusinessComponent} from './tour-business/tour-business.component';
+import {RestaurantBusinessComponent} from './restaurant-business/restaurant-business.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'about', component: AboutUsComponent, canActivate: [AuthGuard]},
   {path: 'shopOnline', component: ShopOnlineComponent, canActivate: [AuthGuard]},
+  {path: 'restaurant', component: RestaurantBusinessComponent, canActivate: [AuthGuard]},
   {path: 'tourBusiness', component: TourBusinessComponent, canActivate: [AuthGuard]},
   {path: 'destinations', component: DestinationTableComponent, canActivate: [AuthGuard]},
   {path: 'destinations/manage', component: DestinationManageComponent, canActivate: [AuthGuard]},
